@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile": "ts-node ./src/index.ts",
-    "dev": "./node_modules/nodemon/bin/nodemon.js -e ts  --exec \"npm run compile\"",
+    "compile": "../../node_modules/.bin/ts-node ./src/index.ts",
+    "dev": "../../node_modules/nodemon/bin/nodemon.js -e ts  --exec \\\"npm run compile\\\"",
     "test": "echo \\\"Error: no src/test specified\\\" && exit 1",
-    "clean": "ts-standard --fix",
-    "lint": "ts-standard"
+    "clean": "../../node_modules/.bin/ts-standard --fix",
+    "lint": "../../node_modules/.bin/ts-standard"
   },
   "keywords": [],
   "author": "George Kephart",
