@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS profile(
                                       profileEmail VARCHAR(32) NOT NULL,
                                       profileHash VARCHAR(97) NOT NULL,
                                       profileImage VARCHAR(24) NOT NULL,
+                                      profileName VARCHAR(32) NOT NULL,
                                       UNIQUE(profileEmail),
                                       PRIMARY KEY(profileId)
 );
@@ -28,8 +29,8 @@ CREATE TABLE IF NOT EXISTS squad(
 CREATE TABLE IF NOT EXISTS request(
                                       requestProfileId UUID NOT NULL,
                                       requestSquadId UUID NOT NULL,
-                                      requestStatus,
-                                          FOREIGN KEY(requestProfileId) REFERENCES profile(profileId),
+                                      requestStatus VARCHAR(24),
+                                      FOREIGN KEY(requestProfileId) REFERENCES profile(profileId),
                                       FOREIGN KEY(requestSquadId) REFERENCES squad(squadId)
 );
 
@@ -38,18 +39,19 @@ CREATE TABLE IF NOT EXISTS message(
                                       messageOwnerId UUID NOT NULL,
                                       messageProfileId UUID NOT NULL,
                                       messageContent VARCHAR(255),
-                                      messageDateTime,
+                                      messageDateTime TIMESTAMP NOT NULL,
                                       messageSentBy VARCHAR(255),
-                                      PRIMARY KEY(messageId) REFERENCES profile(profileId)
-                                      FOREIGN KEY(messageOwnerId) REFERENCES profile()
+                                      PRIMARY KEY(messageId),
+                                      FOREIGN KEY(messageOwnerId) REFERENCES profile(profileName),
+                                      FOREIGN KEY(messageProfileId) REFERENCES profile(profileId)
 );
 
 CREATE TABLE IF NOT EXISTS game(
                                    gameId UUID NOT NULL,
                                    gameSquadId UUID NOT NULL,
                                    gameGenre VARCHAR(32),
-                                   gameImageUrl,
+                                   gameImageUrl VARCHAR(255),
                                    gameName VARCHAR(32),
-                                   PRIMARY KEY(gameId) REFERENCES squad(squadId)
+                                   PRIMARY KEY(gameId),
                                    FOREIGN KEY(gameSquadId) REFERENCES squad(squadProfileId)
 );
