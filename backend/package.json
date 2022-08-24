@@ -7,8 +7,8 @@
     "compile": "ts-node ./index.ts",
     "dev": "npx nodemon -e ts  --exec \"npm run compile\"",
     "test": "echo \\\"Error: no src/test specified\\\" && exit 1",
-    "clean": "../../node_modules/.bin/ts-standard --fix",
-    "lint": "../../node_modules/.bin/ts-standard"
+    "clean": "npx ts-standard --fix",
+    "lint": "npx ts-standard"
   },
   "keywords": [],
   "author": "George Kephart",
