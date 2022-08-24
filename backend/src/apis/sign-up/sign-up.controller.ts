@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
 import {setActivationToken, setHash} from '../../utils/auth.utils'
-import {Profile} from "../../utils/models/profile";
+import {insertProfile, Profile} from "../../utils/models/profile";
 import Mailgun from "mailgun.js";
 import formData from 'form-data'
 import Client from "mailgun.js/dist/lib/client";
@@ -13,7 +13,7 @@ try{
   const {profileEmail, profilePassword, profileName} = request.body
   const profileHash = await setHash(profilePassword)
   const profileActivationToken = setActivationToken()
-  const profileAvatarUrl = null
+
 
   const basePath: string = '${request.protocol}://${request.hostname}/${request.originalUrl} /activation/${profileActivationToken}'
   const message = `<h2>Welcome...</h2>
@@ -41,7 +41,7 @@ try{
 
   const status: Status = {
     status: 200,
-    message: 'profile created please check your email.',
+    message: 'models created please check your email.',
     data:null
   }
 
