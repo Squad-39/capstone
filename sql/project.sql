@@ -8,9 +8,11 @@ CREATE TABLE IF NOT EXISTS profile(
                                       profileId UUID NOT NULL,
                                       profileActivationToken VARCHAR(255),
                                       profileEmail VARCHAR(32) NOT NULL,
+                                      profileGamertag VARCHAR(32) NOT NULL,
                                       profileHash VARCHAR(97) NOT NULL,
                                       profileImage VARCHAR(24) NOT NULL,
                                       profileName VARCHAR(32) NOT NULL,
+                                      profilePlatform VARCHAR(255) NOT NULL,
                                       UNIQUE(profileEmail),
                                       PRIMARY KEY(profileId)
 );
@@ -26,6 +28,8 @@ CREATE TABLE IF NOT EXISTS squad(
                                     FOREIGN KEY(squadProfileId) REFERENCES profile(profileId)
 );
 
+CREATE INDEX ON squad(squadProfileId);
+
 CREATE TABLE IF NOT EXISTS request(
                                       requestProfileId UUID NOT NULL,
                                       requestSquadId UUID NOT NULL,
@@ -33,6 +37,9 @@ CREATE TABLE IF NOT EXISTS request(
                                       FOREIGN KEY(requestProfileId) REFERENCES profile(profileId),
                                       FOREIGN KEY(requestSquadId) REFERENCES squad(squadId)
 );
+
+CREATE INDEX ON request(requestProfileId);
+CREATE INDEX ON request(requestSquadId);
 
 CREATE TABLE IF NOT EXISTS message(
                                       messageId UUID NOT NULL,
@@ -46,6 +53,9 @@ CREATE TABLE IF NOT EXISTS message(
                                       FOREIGN KEY(messageProfileId) REFERENCES profile(profileId)
 );
 
+CREATE INDEX ON message(messageOwnerId);
+CREATE INDEX ON message(messageProfileId);
+
 CREATE TABLE IF NOT EXISTS game(
                                    gameId UUID NOT NULL,
                                    gameSquadId UUID NOT NULL,
@@ -55,3 +65,5 @@ CREATE TABLE IF NOT EXISTS game(
                                    PRIMARY KEY(gameId),
                                    FOREIGN KEY(gameSquadId) REFERENCES squad(squadProfileId)
 );
+
+CREATE INDEX ON game(gameSquadId);
