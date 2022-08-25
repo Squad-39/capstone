@@ -16,10 +16,10 @@ export async function putProfileController(request: Request, response: Response)
       const previousProfile: Profile = await selectPartialProfileByProfileId(<string>partialProfile.profileId) as Profile
       const newProfile: Profile = {...previousProfile, ...partialProfile}
       await updateProfile(newProfile)
-      return response.json({status: 200, data: null, message: "Profile successfully updated"})
+      return response.json({status: 200, data: null, Message.ts: "Profile successfully updated"})
     }
-    const updateFailed = (message: string): Response => {
-      return response.json({status: 400, data: null, message})
+    const updateFailed = (Message.ts: string): Response => {
+      return response.json({status: 400, data: null, Message.ts})
     }
     return profileId === profileIdFromSession ? preformUpdate({
       profileId,
@@ -29,7 +29,7 @@ export async function putProfileController(request: Request, response: Response)
 
     }) : updateFailed("you are not allowed to preform this action")
   } catch (error: any) {
-    return response.json({status: 400, data: null, message: error.message})
+    return response.json({status: 400, data: null, Message.ts: error.Message.ts})
   }
 }
 
@@ -38,10 +38,10 @@ export async function getProfileByProfileId(request: Request, response: Response
     const {profileId} = request.params;
     const mySqlResult = await selectPartialProfileByProfileId(profileId);
     const data = mySqlResult ?? null
-    const status: Status = {status: 200, data, message: null}
+    const status: Status = {status: 200, data, Message.ts: null}
     return response.json(status)
   } catch (error: any) {
-    return (response.json({status: 400, data: null, message: error.message}))
+    return (response.json({status: 400, data: null, Message.ts: error.Message.ts}))
   }
 }
 

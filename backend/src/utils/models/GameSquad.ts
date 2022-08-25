@@ -69,10 +69,10 @@ export async function selectPartialProfileByProfileId (profileId: string): Promi
  * @param profileEmail a string containing the primary key for the target object.
  * @return A promise containing a status object with the primary key provided or null if no id was found
  **/
-export async function selectProfileByProfileEmail (profileEmail: string): Promise<Profile|null> {
-  const result = await sql <Profile[]>`SELECT "profileId", "profileEmail", "profileHash", "profileName" from profile WHERE "profileEmail" = ${profileEmail}`
-  return result?.length === 1 ? result[0] : null
-}
+// export async function selectProfileByProfileEmail (profileEmail: string): Promise<Profile|null> {
+//   const result = await sql <Profile[]>`SELECT "profileId", "profileEmail", "profileHash", "profileName" from profile WHERE "profileEmail" = ${profileEmail}`
+//   return result?.length === 1 ? result[0] : null
+// }
 
 
 
