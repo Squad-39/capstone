@@ -1,4 +1,4 @@
-/*
+
 import {PartialProfile, Profile} from "../../utils/models/Profile";
 import {selectPartialProfileByProfileId} from "../../utils/models/Profile";
 import {Status} from "../../utils/interfaces/Status";
@@ -45,4 +45,4 @@ export async function getProfileByProfileId(request: Request, response: Response
   }
 }
 
-import {Request, Response} from "express";*/
+import {Request, Response} from "express";

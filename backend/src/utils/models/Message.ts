@@ -9,15 +9,6 @@ export interface Message {
   messageSentBy: string | null,
 }
 
-// export interface PartialProfile {
-//   profileId: string | null,
-//   profileActivationToken: string | null,
-//   profileEmail: string,
-//   profileGamertag: string | null,
-//   profileImage: string | null,
-//   profileName: string,
-//   profilePlatform: string | null
-// }
 export async function selectProfileByProfileActivationToken(profileActivationToken: string): Promise<Message|null> {
   const result = await sql <Message[]>
     `SELECT "messageId", "messageRecipientId", "messageSenderId", "messageContent", "messageDateTime", "messageSentBy", from message 
@@ -60,17 +51,6 @@ export async function selectPartialProfileByProfileId (profileId: string): Promi
   const result = await sql<Profile[]>`SELECT "profileId", "profileAboutMe", "profileEmail", "profileName" from profile WHERE "profileId" = ${profileId}`
   return result?.length === 1 ? result[0] : null}
 */
-
-
-/**
- * Helper function that interacts with postgres to select a profile object by its primary key.
- * @param message a string containing the primary key for the target object.
- * @return A promise containing a status object with the primary key provided or null if no id was found
- **/
-// export async function selectProfileByProfileEmail (profileEmail: string): Promise<Profile|null> {
-//   const result = await sql <Profile[]>`SELECT "profileId", "profileEmail", "profileHash", "profileName" from profile WHERE "profileEmail" = ${profileEmail}`
-//   return result?.length === 1 ? result[0] : null
-// }
 
 
 
