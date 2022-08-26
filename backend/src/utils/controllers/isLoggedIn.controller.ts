@@ -4,7 +4,7 @@ import { Status } from '../interfaces/Status'
 import { IncomingHttpHeaders } from 'http'
 import { Profile } from '../models/Profile'
 
-export function isLoggedInController (request: Request, response: Response, next: NextFunction): any {
+export function isLoggedIn (request: Request, response: Response, next: NextFunction): any {
   const status: Status = { status: 400, message: 'Please login', data: null }
 
   const sessionProfile = (request: Request): Profile | undefined => request.session?.profile ?? undefined
