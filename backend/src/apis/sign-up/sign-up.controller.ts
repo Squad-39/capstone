@@ -18,7 +18,7 @@ export async function signUpController(request: Request, response: Response): Pr
 
 
 
-    const basePath: string = '${request.protocol}://${request.hostname}/${request.originalUrl} /activation/${profileActivationToken}'
+    const basePath: string = `${request.protocol}://${request.hostname}/${request.originalUrl} /activation/${profileActivationToken}`
     const message = `<h2>Welcome...</h2>
   <p> In order to start using the site you must confirm your account.</p>
   <p><a href="${basePath}">${basePath}</a></p>`
