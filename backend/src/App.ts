@@ -7,7 +7,7 @@ import { createClient } from 'redis'
 import RedisConnect from 'connect-redis'
 import {signUpRoute} from "./apis/sign-up/sign-up.route";
 import {signInRoute} from "./apis/sign-in/sign-in.route";
-import {signOutRoute} from "./apis/sign-out/sign-out.route";
+import {SignOutRoute} from "./apis/sign-out/sign-out.route";
 import { squadRouter } from './apis/squad/squad.route'
 
 const redisClient = createClient({ legacyMode: true, socket: { host: process.env.REDIS_HOST } })
@@ -52,7 +52,7 @@ export class App {
     this.app.use('/apis', indexRoute)
     this.app.use("/apis/sign-up", signUpRoute)
     this.app.use("/apis/sign-in", signInRoute)
-    this.app.use("/apis/sign-out", signOutRoute)
+    this.app.use("/apis/sign-out", SignOutRoute)
     this.app.use("/apis/squad", squadRouter)
 
   }

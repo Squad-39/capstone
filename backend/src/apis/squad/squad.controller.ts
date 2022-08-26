@@ -1,4 +1,4 @@
-import { insertSquad, Squad, updateSquad } from '../../utils/models/Squad'
+import { insertSquad, Squad } from '../../utils/models/Squad'
 import {Request, Response} from "express";
 import { Status } from '../../utils/interfaces/Status'
 import { Profile } from '../../utils/models/Profile'
