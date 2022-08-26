@@ -6,6 +6,8 @@ import session from 'express-session'
 import { createClient } from 'redis'
 import RedisConnect from 'connect-redis'
 import {signUpRoute} from "./apis/sign-up/sign-up.route";
+import {signInRoute} from "./apis/sign-in/sign-in.route";
+import {signOutRoute} from "./apis/sign-out/sign-out.route";
 
 const redisClient = createClient({ legacyMode: true, socket: { host: process.env.REDIS_HOST } })
 redisClient.connect().catch(console.error)
@@ -48,9 +50,11 @@ export class App {
   private routes (): void {
     this.app.use('/apis', indexRoute)
     this.app.use("/apis/sign-up", signUpRoute)
+    this.app.use("/apis/sign-in", signInRoute)
+    this.app.use("/apis/sign-out", signOutRoute)
   }
 
-  // starts the server and tells the terminal to post a message that the server is running and on what port
+  // starts the server and tells the terminal to post a Message.ts that the server is running and on what port
   public async listen (): Promise<void> {
     await this.app.listen(this.app.get('port'))
     console.log('Express application built successfully')

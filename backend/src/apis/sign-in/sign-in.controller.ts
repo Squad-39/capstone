@@ -8,10 +8,11 @@ import { Profile, selectProfileByProfileEmail } from '../../utils/models/Profile
  * Express controller that handles signing in users when the endpoint POST apis/sign-in/ is called
  * @param request  An object modeling the current request provided by Express.
  * @param response an object modeling the response that will be sent to the client.
- * @return A promise containing a status object with either a success or failure message set to the message field
+ * @return A promise containing a status object with either a success or failure Message.ts set to the Message.ts field
  */
 export async function signInController (request: Request, response: Response): Promise<Response> {
   try {
+    console.log("is this thing on?")
     const { profileEmail, profilePassword } = request.body
     const profile = await selectProfileByProfileEmail(profileEmail)
 
@@ -24,7 +25,7 @@ export async function signInController (request: Request, response: Response): P
 }
 
 /**
- * helper function that attaches a failure message, related to signing in, to the server response.
+ * helper function that attaches a failure Message.ts, related to signing in, to the server response.
  * @param response an object modeling the response that will be sent to the client.
  * @return express response object with the client status object set in json
  **/
@@ -33,7 +34,7 @@ function signInFailed (response: Response): Response {
 }
 
 /**
- * helper function that creates a jwt token, sets it to the authorization header in the response  and attaches a success message, related to signing in, to the response.
+ * helper function that creates a jwt token, sets it to the authorization header in the response  and attaches a success Message.ts, related to signing in, to the response.
  * @param request  An object modeling the current request provided by Express.
  * @param response an object modeling the response that will be sent to the client.
  * @param profile Profile object of the person who just logged in
