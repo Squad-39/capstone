@@ -44,7 +44,9 @@ export async function insertSquad (squad: Squad): Promise<string> {
  * @return A promise containing a status object with the primary key provided or null if no id was found
  **/
 export async function selectSquadBySquadId (squadId: string): Promise<Squad|null> {
-  const result = await sql <Squad[]>`SELECT "squadId", "squadProfileId", "squadAchievements", "squadEmblem", "squadMaxSize", "squadName" from squad WHERE "squadId" = ${squadId}`
+  const result = await sql <Squad[]>
+    `SELECT "squadId", "squadProfileId", "squadAchievements", "squadEmblem", "squadMaxSize", "squadName" from squad 
+    WHERE "squadId" = ${squadId}`
   return result?.length === 1 ? result[0] : null
 }
 //   const {squadId, squadProfileId, squadAchievements, squadEmblem, squadMaxSize, squadName  } = squad
