@@ -3,6 +3,7 @@ import {Request, Response} from "express";
 import { Status } from '../../utils/interfaces/Status'
 import { Profile } from '../../utils/models/Profile'
 
+// Export async function for creating a Squad.
 export async function postSquadController(request: Request, response: Response) : Promise<Response<Status>> {
   try {
 
@@ -36,6 +37,7 @@ export async function postSquadController(request: Request, response: Response) 
   }
 }
 
+// Export async function for getting a Squad by SquadId
 export async function getSquadBySquadId(request: Request, response: Response): Promise<Response> {
   try {
     const {squadId} = request.params;
