@@ -1,5 +1,6 @@
 import {sql} from '../database.utils'
 
+// Export interface for creating Squad
 export interface Squad {
   squadId: string | null
   squadProfileId: string | null,
@@ -10,6 +11,7 @@ export interface Squad {
 
 }
 
+// Export interface for updating Squad
 export interface PartialSquad {
   squadId: string | null,
   squadProfileId: string | null,
@@ -65,7 +67,7 @@ SET "squadId" = ${squadId}, "squadProfileId" = ${squadProfileId}, "squadAchievem
  * @param squadId a string containing the primary key for the target object.
  * @return A promise containing a status object with the primary key provided or null if no id was found
  **/
-// Export async function for
+// Export async function for selecting the partial squad to get ready to update.
 export async function selectPartialSquadBySquadId (squadId: string): Promise<PartialSquad|null> {
   const result = await sql<Squad[]>
     `SELECT "squadId", "squadProfileId", "squadAchievements", "squadEmblem", "squadMaxSize", "squadName" from squad 
