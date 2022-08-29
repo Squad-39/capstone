@@ -52,11 +52,23 @@ export async function selectSquadBySquadId (squadId: string): Promise<Squad|null
  * @return success Message.ts if the sql statement was executed with no errors
  **/
 // Export async function for updating a Squad.
-export async function updateSquad (squad: Squad): Promise<string> {
+export async function updateSquad (squad: PartialSquad): Promise<string> {
   const {squadId, squadProfileId, squadAchievements, squadEmblem, squadMaxSize, squadName } = squad
-  await sql`
-UPDATE "squad"
-SET "squadId" = ${squadId}, "squadProfileId" = ${squadProfileId}, "squadAchievements" = ${squadAchievements}, "squadEmblem" = ${squadEmblem}, "squadMaxSize" = ${squadMaxSize}, "squadName" = ${squadName}
-WHERE "squadId" = ${squadId}`
+  await sql
+    `UPDATE "squad"
+SET "squadId" = ${squadId}, "squadProfileId" = ${squadProfileId}, "squadAchievements" = ${squadAchievements}, "squadEmblem" = ${squadEmblem}, "squadMaxSize" = ${squadMaxSize}, "squadName" = ${squadName}`
   return 'Squad updated successfully'
+}
+
+/**
+ * Helper function that interacts with postgres to select a profile object by its primary key.
+ * @param squadId a string containing the primary key for the target object.
+ * @return A promise containing a status object with the primary key provided or null if no id was found
+ **/
+// Export async function for
+export async function selectPartialSquadBySquadId (squadId: string): Promise<PartialSquad|null> {
+  const result = await sql<Squad[]>
+    `SELECT "squadId", "squadProfileId", "squadAchievements", "squadEmblem", "squadMaxSize", "squadName" from squad 
+    WHERE "squadId" = ${squadId}`
+  return result?.length === 1 ? result[0] : null
 }
