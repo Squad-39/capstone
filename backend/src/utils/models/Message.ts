@@ -9,15 +9,6 @@ export interface Message {
   messageSentBy: string | null,
 }
 
-// export interface PartialProfile {
-//   profileId: string | null,
-//   profileActivationToken: string | null,
-//   profileEmail: string,
-//   profileGamertag: string | null,
-//   profileImage: string | null,
-//   profileName: string,
-//   profilePlatform: string | null
-// }
 export async function selectProfileByProfileActivationToken(profileActivationToken: string): Promise<Message|null> {
   const result = await sql <Message[]>
     `SELECT "messageId", "messageRecipientId", "messageSenderId", "messageContent", "messageDateTime", "messageSentBy", from message 

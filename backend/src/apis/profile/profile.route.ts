@@ -1,13 +1,22 @@
-import {Router} from "express";
-import {asyncValidatorController} from "../../utils/controllers/async-Validator.controller";
-import {check, checkSchema} from "express-validator";
-import {isLoggedInController} from "../../utils/controllers/isLoggedIn.controller";
-import {profileValidator} from "./profile.validator";
+import { getProfileByProfileIdController, putProfileController } from './profile.controller'
+import { Router } from 'express'
+import { check, checkSchema } from 'express-validator'
+import { asyncValidatorController } from '../../utils/controllers/async-validator.controller'
+import {isLoggedInController} from '../../utils/controllers/is-logged-in.controller'
+import { profileValidator } from './profile.validator'
 
-export const ProfileRoute: Router = Router();
-ProfileRoute.route('/').post(putProfileController);
-ProfileRoute.route("/:profileId").get(asyncValidatorController([check("profileId", "please provide a valid profileId").isUUID()]), getProfileByProfileId).put(isLoggedInController, asyncValidatorController(checkSchema(profileValidator)), putProfileController)
-import {getProfileByProfileId, putProfileController} from "./profile.controller";
+export const profileRoute: Router = Router()
+profileRoute.route('/')
+  .post(putProfileController)
+
+profileRoute.route('/:profileId')
+  .get(
+    asyncValidatorController([
+      check('profileId', 'please provide a valid profileId').isUUID()
+    ])
+    , getProfileByProfileIdController
+  )
+  .put(isLoggedInController, asyncValidatorController(checkSchema(profileValidator)), putProfileController)
 
 
 
