@@ -1,6 +1,10 @@
 import {NextFunction, Request, Response} from "express";
 import {Status} from '../../utils/interfaces/Status';
-import {updateProfile, Profile, selectProfileByProfileActivationToken} from "../../utils/models/Profile";
+import {
+  Profile,
+  selectProfileByProfileActivationToken,
+  insertProfile
+} from '../../utils/models/Profile'
 
 
 export async function activationController(request: Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>> {
@@ -22,9 +26,9 @@ function activationFailed (response: Response) : Response {
 });}
 
 async function activationSucceeded (profile: Profile, response: Response):Promise<Response>  {
-  const updatedProfile = {...profile, profileActivationToken: null}
-  console.log(updatedProfile)
-  await updateProfile(updatedProfile)
+  const Profile = {...profile, profileActivationToken: null}
+  console.log(Profile)
+  await insertProfile(Profile)
   return response.json({
     status: 200,
     data: null,

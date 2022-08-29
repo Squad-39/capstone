@@ -52,11 +52,11 @@ SET "profileActivationToken" = ${profileActivationToken},  "profileEmail" = ${pr
 WHERE "profileId" = ${profileId}`
   return 'Profile updated successfully'
 }
-/**
- * Helper function that interacts with postgres to select a profile object by its primary key.
- * @param profileId a string containing the primary key for the target object.
- * @return A promise containing a status object with the primary key provided or null if no id was found
- **/
+// /**
+//  * Helper function that interacts with postgres to select a profile object by its primary key.
+//  * @param profileId a string containing the primary key for the target object.
+//  * @return A promise containing a status object with the primary key provided or null if no id was found
+//  **/
 /*
 export async function selectPartialProfileByProfileId (profileId: string): Promise<PartialProfile|null> {
   const result = await sql<Profile[]>`SELECT "profileId", "profileAboutMe", "profileEmail", "profileName" from profile WHERE "profileId" = ${profileId}`
@@ -73,10 +73,3 @@ export async function selectProfileByProfileEmail (profileEmail: string): Promis
   const result = await sql <Profile[]>`SELECT "profileId", "profileEmail", "profileHash", "profileName" from profile WHERE "profileEmail" = ${profileEmail}`
   return result?.length === 1 ? result[0] : null
 }
-
-
-
-
-
-
-
