@@ -5,10 +5,9 @@ export interface Game {
   gameGenre: string | null,
   gameImageUrl: string,
   gameName: string | null,
-
 }
 
-export async function selectProfileByProfileActivationToken(profileActivationToken: string): Promise<Game|null> {
+export async function selectGameByGameId(profileActivationToken: string): Promise<Game|null> {
   const result = await sql <Game[]>
     `SELECT "gameId", "gameGenre", "gameImageUrl", "gameName" from profile 
     WHERE "profileActivationToken" = ${profileActivationToken}`
