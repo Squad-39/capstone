@@ -1,26 +1,55 @@
-export const profileValidator: Schema = {profileId: {isUUID: {errorMessage: 'please provide a valid TweetProfileId'}},
-  profileAtHandle: {
+import { Schema } from 'express-validator'
+
+export const profileValidator: Schema = {
+  profileId: {
+    escape: true,
+    trim: true,
+    optional: {
+      options: {
+        nullable: true
+      }
+    },
+    isLength: {
+      errorMessage: 'profile about me must be between one and thirty two characters',
+      options: { min: 1, max: 512 }
+    }
+  },
+  profileActivationToken: {
     escape: true,
     trim: true,
     isLength: {
-      errorMessage: 'profileAtHandle must be between seven and thirty two characters',
-      options: {min: 1, max: 32}
+      errorMessage: 'profile name must be between one and thirty two characters',
+      options: { min: 1, max: 32 }
     }
   },
-  profileAvatarUrl: {
-    optional: {options: {nullable: true}},
-    isURL: {errorMessage: "models avatar is malformed please upload a new image"},
+  profileEmail: {
+    isEmail: {
+      errorMessage: 'Please provide a valid email'
+    },
+    // Uncomment the next line to sanitize email, but it removes +1 from testing email addresses.
+    // normalizeEmail: true,
+    trim: true
   },
-  profileEmail: {isEmail: {errorMessage: 'Please provide a valid email'}, trim: true},
-  profilePhone: {
-    isMobilePhone: {errorMessage: "please provide a valid mobile phone number"},
-    optional: {options: {nullable: true}}
+  profileGamertag: {
+    escape: true,
+    trim: true,
+  },
+  profileHash: {
+
+  },
+  profileImage: {
+    escape: true,
+    trim: true,
+  },
+  profileName: {
+    escape: true,
+    trim: true,
+  },
+  profilePlatform: {
+    escape: true,
+    trim: true,
   }
-};
-import {Schema} from "express-validator";
-
-
-
+}
 
 
 
