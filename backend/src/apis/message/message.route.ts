@@ -10,8 +10,10 @@ export const messageRoute = Router()
 messageRoute.route('/')
   .post(isLoggedInController, asyncValidatorController(checkSchema(messageValidator)), )
 
+
 messageRoute.route('/:messageId')
   .get(asyncValidatorController([check('messageId', 'please provide a valid messageId').isUUID()]), getMessageByMessageRecipientId)
   .put(isLoggedInController, asyncValidatorController(checkSchema(messageValidator)), getMessageByMessageRecipientId)
 
+// Route for getting Messages from Sender
 messageRoute.route('/messageId/:messageId').get(asyncValidatorController([check('messageId', 'please provide a valid gamertagId').isUUID()]), getMessageByMessageSenderId)

@@ -75,15 +75,3 @@ export async function selectPartialSquadBySquadId (squadId: string): Promise<Par
     WHERE "squadId" = ${squadId}`
   return result?.length === 1 ? result[0] : null
 }
-
-/**
- * Helper function that interacts with postgres to select a profile object by its primary key.
- * @param squad a string containing the primary key for the target object.
- * @return A promise containing a status object with the primary key provided or null if no id was found
- **/
-// Export async function for deleting Squad.
-export async function deleteSquad (squad: Squad): Promise<string> {
-  await sql`DELETE FROM squad ("squadId", "squadProfileId", "squadAchievements", "squadEmblem", "squadMaxSize", "squadName")`
-  return 'Squad deleted successfully.'
-
-}
