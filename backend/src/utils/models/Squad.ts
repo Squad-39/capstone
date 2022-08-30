@@ -58,7 +58,8 @@ export async function updateSquad (squad: PartialSquad): Promise<string> {
   const {squadId, squadProfileId, squadAchievements, squadEmblem, squadMaxSize, squadName } = squad
   await sql
     `UPDATE "squad"
-SET "squadId" = ${squadId}, "squadProfileId" = ${squadProfileId}, "squadAchievements" = ${squadAchievements}, "squadEmblem" = ${squadEmblem}, "squadMaxSize" = ${squadMaxSize}, "squadName" = ${squadName}`
+SET "squadId" = ${squadId}, "squadProfileId" = ${squadProfileId}, "squadAchievements" = ${squadAchievements}, "squadEmblem" = ${squadEmblem}, "squadMaxSize" = ${squadMaxSize}, "squadName" = ${squadName}
+  WHERE "squadId" = ${squadId}`
   return 'Squad updated successfully'
 }
 

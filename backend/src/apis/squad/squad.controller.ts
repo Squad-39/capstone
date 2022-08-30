@@ -49,17 +49,18 @@ export async function postSquadController(request: Request, response: Response) 
 // Export async function to create and update Squad
 export async function putSquadController (request: Request, response: Response): Promise<Response> {
     try {
-      const { profileId } = request.params
-      console.log("squadId from url", profileId)
-      const profile = request.session.profile as Profile
-      const profileIdFromSession = profile.profileId as string
+      const { squadId } = request.params
+      console.log("squadId from url", squadId)
+      const squad = request.session.squad as Squad
+      const squadProfileIdFromSession = squad.squadProfileId as string
+      console.log("squadSquadProfileId from session", squadProfileIdFromSession)
 
-      if (profileId !== profileIdFromSession) {
+      if (squadId !== squadProfileIdFromSession) {
         return response.json({ status: 400, data: null, message: 'You are not allowed to preform this task' })
       }
       const {squadAchievements, squadEmblem, squadMaxSize, squadName} = request.body
       const updatedValues = {squadAchievements, squadEmblem, squadMaxSize, squadName}
-      const previousSquad: Squad = await selectPartialSquadBySquadId(profileId) as Squad
+      const previousSquad: Squad = await selectPartialSquadBySquadId(squadId) as Squad
 
       const newSquad: Squad = {...previousSquad, ...updatedValues }
       await updateSquad(newSquad)
