@@ -1,8 +1,14 @@
 import { Router } from 'express';
 import { asyncValidatorController } from '../../utils/controllers/async-validator.controller';
+<<<<<<< HEAD
 import {isLoggedIn} from "../../utils/controllers/isLoggedIn.controller";
 import { check, checkSchema } from 'express-validator'
 import { putSquadController, getSquadBySquadId, postSquadController} from './squad.controller'
+=======
+import {isLoggedIn} from "../../utils/controllers/is-logged-in.controller";
+import {checkSchema} from 'express-validator';
+import { postSquadController, getSquadBySquadId } from './squad.controller'
+>>>>>>> 717c3b81b4d41599de3e0ae0d25ba30d5302f456
 import { squadValidator } from './squad.validator'
 
 export const squadRouter = Router();
