@@ -1,5 +1,5 @@
 import {
-  insertSquad,
+  insertSquad, PartialSquad,
   selectPartialSquadBySquadId,
   selectSquadBySquadId,
   Squad,
@@ -50,23 +50,27 @@ export async function postSquadController(request: Request, response: Response) 
 export async function putSquadController (request: Request, response: Response): Promise<Response> {
     try {
       const { squadId } = request.params
-      console.log("squadId from url", squadId)
-      const squad = request.session.squad as Squad
-      const squadProfileIdFromSession = squad.squadProfileId as string
-      console.log("squadSquadProfileId from session", squadProfileIdFromSession)
+      // console.log("squadId from url", squadId)
+      const profile = request.session.profile as Profile
+      const squadProfileIdFromSession = profile.profileId as string
+      const {squadAchievements, squadEmblem, squadMaxSize, squadName} = request.body
 
-      if (squadId !== squadProfileIdFromSession) {
+      const previousSquad: PartialSquad | null = await selectPartialSquadBySquadId(squadId)
+
+      if (previousSquad === null) {
+        return response.json({status: 404, data: null, message: 'Squad does not exist'})
+      }
+      if (squadProfileIdFromSession !== previousSquad.squadProfileId) {
         return response.json({ status: 400, data: null, message: 'You are not allowed to preform this task' })
       }
-      const {squadAchievements, squadEmblem, squadMaxSize, squadName} = request.body
+
       const updatedValues = {squadAchievements, squadEmblem, squadMaxSize, squadName}
-      const previousSquad: Squad = await selectPartialSquadBySquadId(squadId) as Squad
 
       const newSquad: Squad = {...previousSquad, ...updatedValues }
-      await updateSquad(newSquad)
-      return response.json({ status: 200, data: null, message: 'Squad successfully updated' })
+      const message: string = await updateSquad(newSquad)
+      return response.json({ status: 200, data: null, message: 'Squad successfully updated'})
     } catch (error: any) {
-      return response.json({ status: 400, data: null, message: error.message })
+      return response.json({ status: 500, data: null, message: error.message})
     }
 }
 
