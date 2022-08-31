@@ -45,4 +45,4 @@ export async function getProfileByProfileId(request: Request, response: Response
   }
 }
 
-import {Request, Response} from "express";*/
+import {Request, Response} from "express"; */

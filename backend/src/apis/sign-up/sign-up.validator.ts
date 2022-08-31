@@ -1,4 +1,4 @@
-import {Schema} from 'express-validator'
+import { Schema } from 'express-validator'
 
 export const signUpValidator: Schema = {
   profileEmail: {
@@ -12,17 +12,17 @@ export const signUpValidator: Schema = {
     trim: true,
     isLength: {
       errorMessage: 'models name must be between 1 and 32 characters',
-      options: {min:1, max:32}
+      options: { min: 1, max: 32 }
     }
   },
-    profilePassword: {
-      isLength: {
-        errorMessage: 'Password must be at least eight characters',
-        options: {min: 8}
-      },
-      trim: true,
-      escape: true
+  profilePassword: {
+    isLength: {
+      errorMessage: 'Password must be at least eight characters',
+      options: { min: 8 }
     },
+    trim: true,
+    escape: true
+  },
 
   profilePasswordConfirm: {
     isLength: {
@@ -46,7 +46,7 @@ export const signUpValidator: Schema = {
     trim: true,
     isLength: {
       errorMessage: 'models name must be between 1 and 32 characters',
-      options: {min:1, max:32}
+      options: { min: 1, max: 32 }
     }
   },
 
@@ -55,6 +55,7 @@ export const signUpValidator: Schema = {
     trim: true,
     isLength: {
       errorMessage: 'models name must be between 1 and 32 characters',
-      options: {min:1, max:32}
+      options: { min: 1, max: 32 }
+    }
   }
-  }}
+}

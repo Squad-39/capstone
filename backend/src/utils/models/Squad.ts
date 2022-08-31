@@ -1,26 +1,25 @@
-import {sql} from '../database.utils'
+import { sql } from '../database.utils'
 
 export interface Squad {
   squadId: string | null
-  squadProfileId: string | null,
-  squadAchievements: string,
-  squadEmblem: string | null,
-  squadMaxSize: string,
-  squadName: string | null,
+  squadProfileId: string | null
+  squadAchievements: string
+  squadEmblem: string | null
+  squadMaxSize: string
+  squadName: string | null
 
 }
 
 export interface PartialSquad {
-  squadId: string | null,
-  squadProfileId: string | null,
-  squadAchievements: string | null,
-  squadEmblem: string | null,
-  squadMaxSize: string,
+  squadId: string | null
+  squadProfileId: string | null
+  squadAchievements: string | null
+  squadEmblem: string | null
+  squadMaxSize: string
   squadName: string | null
 }
-export async function selectProfileByProfileActivationToken(profileActivationToken: string): Promise<Squad|null> {
-  const result = await sql <Squad[]>
-    `SELECT "squadId", "squadProfileId", "squadAchievements", "squadEmblem", "squadMaxSize", "squadName" from Squad 
+export async function selectProfileByProfileActivationToken (profileActivationToken: string): Promise<Squad|null> {
+  const result = await sql <Squad[]>`SELECT "squadId", "squadProfileId", "squadAchievements", "squadEmblem", "squadMaxSize", "squadName" from Squad 
     WHERE "profileActivationToken" = ${profileActivationToken}`
   return result?.length === 1 ? result[0] : null
 }
@@ -31,7 +30,7 @@ export async function selectProfileByProfileActivationToken(profileActivationTok
  * @return success Message.ts if the sql statement was executed with no errors
  **/
 export async function insertSquad (squad: Squad): Promise<string> {
-  const {squadId, squadProfileId, squadAchievements, squadEmblem, squadMaxSize, squadName  } = squad
+  const { squadId, squadProfileId, squadAchievements, squadEmblem, squadMaxSize, squadName } = squad
   await sql`
   INSERT INTO profile("squadId", "squadProfileId", "squadAchievements", "squadEmblem", "squadMaxSize", "squadName")
   VALUES(gen_random_uuid(), ${squadProfileId}, ${squadAchievements}, ${squadEmblem}, ${squadMaxSize}, ${squadName})`
@@ -43,7 +42,7 @@ export async function insertSquad (squad: Squad): Promise<string> {
  * @return success Message.ts if the sql statement was executed with no errors
  **/
 export async function updateSquad (squad: Squad): Promise<string> {
-  const {squadId, squadProfileId, squadAchievements, squadEmblem, squadMaxSize, squadName } = squad
+  const { squadId, squadProfileId, squadAchievements, squadEmblem, squadMaxSize, squadName } = squad
   await sql`
 UPDATE "squad" 
 SET "squadId" = ${squadId}, "squadProfileId" = ${squadProfileId}, "squadAchievements" = ${squadAchievements}, "squadEmblem" = ${squadEmblem}, "squadMaxSize" = ${squadMaxSize}, "squadName" = ${squadName}
@@ -61,7 +60,6 @@ export async function selectPartialProfileByProfileId (profileId: string): Promi
   return result?.length === 1 ? result[0] : null}
 */
 
-
 // /**
 //  * Helper function that interacts with postgres to select a profile object by its primary key.
 //  * @param profileEmail a string containing the primary key for the target object.
@@ -71,10 +69,3 @@ export async function selectPartialProfileByProfileId (profileId: string): Promi
 //   const result = await sql <Profile[]>`SELECT "profileId", "profileEmail", "profileHash", "profileName" from profile WHERE "profileEmail" = ${profileEmail}`
 //   return result?.length === 1 ? result[0] : null
 // }
-
-
-
-
-
-
-

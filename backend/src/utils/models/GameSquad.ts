@@ -1,28 +1,27 @@
-import {sql} from '../database.utils'
+import { sql } from '../database.utils'
 
 export interface Profile {
-  profileId: string | null,
-  profileActivationToken: string | null,
-  profileEmail: string,
-  profileGamertag: string | null,
-  profileHash: string,
-  profileImage: string | null,
-  profileName: string,
+  profileId: string | null
+  profileActivationToken: string | null
+  profileEmail: string
+  profileGamertag: string | null
+  profileHash: string
+  profileImage: string | null
+  profileName: string
   profilePlatform: string | null
 }
 
 export interface PartialProfile {
-  profileId: string | null,
-  profileActivationToken: string | null,
-  profileEmail: string,
-  profileGamertag: string | null,
-  profileImage: string | null,
-  profileName: string,
+  profileId: string | null
+  profileActivationToken: string | null
+  profileEmail: string
+  profileGamertag: string | null
+  profileImage: string | null
+  profileName: string
   profilePlatform: string | null
 }
-export async function selectProfileByProfileActivationToken(profileActivationToken: string): Promise<Profile|null> {
-  const result = await sql <Profile[]>
-    `SELECT "profileId", "profileActivationToken", "profileEmail", "profileGamertag", "profileHash", "profileImage", "profileName", "profilePlatform" from profile 
+export async function selectProfileByProfileActivationToken (profileActivationToken: string): Promise<Profile|null> {
+  const result = await sql <Profile[]>`SELECT "profileId", "profileActivationToken", "profileEmail", "profileGamertag", "profileHash", "profileImage", "profileName", "profilePlatform" from profile 
     WHERE "profileActivationToken" = ${profileActivationToken}`
   return result?.length === 1 ? result[0] : null
 }
@@ -63,7 +62,6 @@ export async function selectPartialProfileByProfileId (profileId: string): Promi
   return result?.length === 1 ? result[0] : null}
 */
 
-
 /**
  * Helper function that interacts with postgres to select a profile object by its primary key.
  * @param profileEmail a string containing the primary key for the target object.
@@ -73,10 +71,3 @@ export async function selectPartialProfileByProfileId (profileId: string): Promi
 //   const result = await sql <Profile[]>`SELECT "profileId", "profileEmail", "profileHash", "profileName" from profile WHERE "profileEmail" = ${profileEmail}`
 //   return result?.length === 1 ? result[0] : null
 // }
-
-
-
-
-
-
-

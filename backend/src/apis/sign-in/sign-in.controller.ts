@@ -12,7 +12,7 @@ import { Profile, selectProfileByProfileEmail } from '../../utils/models/Profile
  */
 export async function signInController (request: Request, response: Response): Promise<Response> {
   try {
-    console.log("is this thing on?")
+    console.log('is this thing on?')
     const { profileEmail, profilePassword } = request.body
     const profile = await selectProfileByProfileEmail(profileEmail)
 
@@ -58,15 +58,3 @@ function signInSuccessful (request: Request, response: Response, profile: Profil
   })
   return response.json({ status: 200, message: 'Sign in successful', data: null })
 }
-
-
-
-
-
-
-
-
-
-
-
-

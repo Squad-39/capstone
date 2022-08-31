@@ -1,10 +1,10 @@
 import { App } from './App'
-import {Profile} from "./utils/models/Profile";
+import { Profile } from './utils/models/Profile'
 
 declare module 'express-session' {
   export interface SessionData {
-    profile: Profile|undefined;
-    signature: string|undefined;
+    profile: Profile|undefined
+    signature: string|undefined
     jwt: string|undefined
   }
 }
