@@ -35,7 +35,7 @@ export async function insertProfile (profile: Profile): Promise<string> {
   const { profileId, profileActivationToken, profileEmail, profileGamertag, profileHash, profileImage, profileName, profilePlatform } = profile
   await sql`
   INSERT INTO profile("profileId", "profileActivationToken", "profileEmail", "profileGamertag", "profileHash", "profileImage", "profileName", "profilePlatform")
-  VALUES(gen_random_uuid(), ${profileActivationToken}, ${profileEmail}, ${profileGamertag}, ${profileHash}, ${profileImage}, ${profileName}, ${profilePlatform})`
+  VALUES(gen_random_uuid(), ${profileActivationToken} ${profileEmail}, ${profileGamertag}, ${profileHash}, ${profileImage}, ${profileName}, ${profilePlatform})`
   return 'Profile successfully created'
 }
 /**
@@ -56,11 +56,11 @@ WHERE "profileId" = ${profileId}`
  * @param profileId a string containing the primary key for the target object.
  * @return A promise containing a status object with the primary key provided or null if no id was found
  **/
-/*
+
 export async function selectPartialProfileByProfileId (profileId: string): Promise<PartialProfile|null> {
-  const result = await sql<Profile[]>`SELECT "profileId", "profileAboutMe", "profileEmail", "profileName" from profile WHERE "profileId" = ${profileId}`
+  const result = await sql<Profile[]>`SELECT "profileId", "profileEmail", "profileName" from profile WHERE "profileId" = ${profileId}`
   return result?.length === 1 ? result[0] : null}
-*/
+
 
 /**
  * Helper function that interacts with postgres to select a profile object by its primary key.
@@ -71,3 +71,4 @@ export async function selectProfileByProfileEmail (profileEmail: string): Promis
   const result = await sql <Profile[]>`SELECT "profileId", "profileEmail", "profileHash", "profileName" from profile WHERE "profileEmail" = ${profileEmail}`
   return result?.length === 1 ? result[0] : null
 }
+
