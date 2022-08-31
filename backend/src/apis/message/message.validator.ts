@@ -3,53 +3,42 @@ import { Schema } from 'express-validator'
 export const messageValidator: Schema = {
   messageId: {
     isUUID: {
-      errorMessage: 'please provide a valid messageId'
+      errorMessage: 'Please provide a valid messageId'
     }
   },
   messageRecipientId: {
     isUUID: {
-      errorMessage: 'please provide a valid TicketProfileId'
+      errorMessage: 'Please provide a valid messageRecipientId'
     }
   },
   messageSenderId: {
+    isUUID: {
+      errorMessage: 'Please provide a valid messageSenderId'
+    }
+  },
+  messageContent: {
     isLength: {
-      errorMessage: 'name cannot be longer than 32 characters',
-      options: { min: 1, max: 32 }
+      errorMessage: 'Message must be between 1 to 255 characters.',
+      options: { min: 1, max: 255 }
     },
     trim: true,
     escape: true
   },
-  messageContent: {
-    isDate: true,
-    errorMessage: "ticket due date is malformed",
-    optional: {
-      options: {
-        nullable: true
-      }
-    },
-  },
   messageDateTime: {
-    trim: true,
-    escape: true,
+    isDate: true,
+    errorMessage: "There's an error for messageDateTime",
     optional: {
       options: {
         nullable: true
       }
     },
-    isLength: {
-      errorMessage: 'Description cannot be longer than 512 characters',
-      options: { min: 1, max: 512 }
-    }
-
   },
   messageSentBy: {
-    isDate: true,
-    errorMessage: "ticket due date is malformed",
-    optional: {
-      options: {
-        nullable: true
-      }
+    isLength: {
+      errorMessage: 'Message must be between 1 to 255 characters.',
+      options: { min: 1, max: 255 }
     },
+    trim: true,
+    escape: true
   },
-
 }

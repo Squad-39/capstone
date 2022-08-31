@@ -3,17 +3,22 @@ import {sql} from '../database.utils'
 export interface Message {
   messageId: string | null,
   messageRecipientId: string | null,
-  messageSenderId: string,
+  messageSenderId: string | null,
   messageContent: string | null,
-  messageDateTime: string,
+  messageDateTime: string | null,
   messageSentBy: string | null,
 }
 
-export async function insertMessage (message: Message): Promise<string> {
+/**
+ * Helper function that interacts with postgres to insert a profile object in the database
+ * @param message object that will be inserted into the database
+ * @return success Message.ts if the sql statement was executed with no errors
+ **/
+export async function insertMessage (message: Message): Promise<string|null> {
   const {messageId, messageRecipientId, messageSenderId, messageContent, messageDateTime, messageSentBy} = message
-
-  await sql`INSERT INTO message ( "messageId", "messageRecipientId", "messageSenderId", "messageContent", "messageDateTime", "messageSentBy") 
-  VALUES(gen_random_uuid(), ${messageId} ${messageRecipientId}, ${messageSenderId}, ${messageContent}, ${messageDateTime}, ${messageSentBy})`
+  await sql`
+INSERT INTO message ( "messageId", "messageRecipientId", "messageSenderId", "messageContent", "messageDateTime", "messageSentBy")
+VALUES(gen_random_uuid(), ${messageRecipientId}, ${messageSenderId}, ${messageContent}, ${messageDateTime}, ${messageSentBy})`
   return 'Message created successfully'
 }
 
