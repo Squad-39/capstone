@@ -18,7 +18,7 @@ export async function insertMessage (message: Message): Promise<string|null> {
   const {messageId, messageRecipientId, messageSenderId, messageContent, messageDateTime, messageSentBy} = message
   await sql`
 INSERT INTO message ( "messageId", "messageRecipientId", "messageSenderId", "messageContent", "messageDateTime", "messageSentBy")
-VALUES(gen_random_uuid(), ${messageRecipientId}, ${messageSenderId}, ${messageContent}, ${messageDateTime}, ${messageSentBy})`
+VALUES(gen_random_uuid(), ${messageRecipientId}, ${messageSenderId}, ${messageContent}, ${messageDateTime} , ${messageSentBy})`
   return 'Message created successfully'
 }
 
