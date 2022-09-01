@@ -21,3 +21,16 @@ export async function insertMessage (message: Message): Promise<string> {
  * @param message Message object that will be inserted into the database
  * @return success Message.ts if the sql statement was executed with no errors
  **/
+
+export async function selectMessageByRecipientId (message: Message): Promise<string> {
+  const { messageId, messageRecipientId, messageSenderId, messageContent, messageDateTime, messageSentBy } = message
+
+  await sql`INSERT INTO ticket( "messageId", "messageRecipientId", "messageSenderId", "messageContent", "messageDateTime", "messageSentBy") VALUES(gen_random_uuid(), ${messageId}, ${messageRecipientId}, ${messageSenderId}, ${messageContent}, ${messageDateTime}, ${messageSentBy})`
+  return 'Ticket created successfully'
+}
+export async function selectMessageBySenderId (message: Message): Promise<string> {
+  const { messageId, messageRecipientId, messageSenderId, messageContent, messageDateTime, messageSentBy } = message
+
+  await sql`INSERT INTO ticket( "messageId", "messageRecipientId", "messageSenderId", "messageContent", "messageDateTime", "messageSentBy") VALUES(gen_random_uuid(), ${messageId}, ${messageRecipientId}, ${messageSenderId}, ${messageContent}, ${messageDateTime}, ${messageSentBy})`
+  return 'Ticket created successfully'
+}

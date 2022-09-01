@@ -9,18 +9,6 @@ export const profileValidator: Schema = {
         nullable: true
       }
     },
-    isLength: {
-      errorMessage: 'profile about me must be between one and thirty two characters',
-      options: { min: 1, max: 512 }
-    }
-  },
-  profileActivationToken: {
-    escape: true,
-    trim: true,
-    isLength: {
-      errorMessage: 'profile name must be between one and thirty two characters',
-      options: { min: 1, max: 32 }
-    }
   },
   profileEmail: {
     isEmail: {
