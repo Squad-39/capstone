@@ -14,11 +14,11 @@ export interface Message {
  * @param message object that will be inserted into the database
  * @return success Message.ts if the sql statement was executed with no errors
  **/
-export async function insertMessage (message: Message): Promise<string|null> {
+export async function insertMessage (message: Message): Promise<string> {
   const {messageId, messageRecipientId, messageSenderId, messageContent, messageDateTime, messageSentBy} = message
   await sql`
 INSERT INTO message ( "messageId", "messageRecipientId", "messageSenderId", "messageContent", "messageDateTime", "messageSentBy")
-VALUES(gen_random_uuid(), ${messageRecipientId}, ${messageSenderId}, ${messageContent}, ${messageDateTime} , ${messageSentBy})`
+VALUES(gen_random_uuid(), ${messageRecipientId}, ${messageSenderId}, ${messageContent}, ${messageDateTime}, ${messageSentBy})`
   return 'Message created successfully'
 }
 

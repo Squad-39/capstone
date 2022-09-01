@@ -13,11 +13,11 @@ import { Profile } from '../../utils/models/Profile'
 export async function postMessage (request: Request, response: Response): Promise<Response<Status>> {
   try {
     const { messageContent, messageDateTime, messageSenderId, messageRecipientId, messageSentBy } = request.body
-    console.log("This is the message I see", messageContent)
-    console.log("This is the DateTime I see", messageDateTime)
+    // console.log("This is the message I see", messageContent)
+    // console.log("This is the DateTime I see", messageDateTime)
     const profile: Profile = request.session.profile as Profile
     const messageId: string = <string>profile.profileId
-    console.log("This is the messageId I'm seeing", messageId)
+    // console.log("This is the messageId I'm seeing", messageId)
     const message: Message = {
       messageId,
       messageRecipientId,
@@ -26,9 +26,9 @@ export async function postMessage (request: Request, response: Response): Promis
       messageDateTime,
       messageSentBy
     }
-    console.log("This is the RecipientId I see.", messageRecipientId)
-    console.log("This is the SenderId I see.", messageSenderId)
-    console.log("This is who the message is SentBy", messageSentBy)
+    // console.log("This is the RecipientId I see.", messageRecipientId)
+    // console.log("This is the SenderId I see.", messageSenderId)
+    // console.log("This is who the message is SentBy", messageSentBy)
     const result = await insertMessage(message)
     // return the response
     const status: Status = {
@@ -42,7 +42,7 @@ export async function postMessage (request: Request, response: Response): Promis
       status: 500,
       message: 'Error sending message.',
       data: null
-    });
+    })
   }
 }
 
