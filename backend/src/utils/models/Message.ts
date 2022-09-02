@@ -24,26 +24,22 @@ VALUES(gen_random_uuid(), ${messageRecipientId}, ${messageSenderId}, ${messageCo
 
 /**
  * Helper function that interacts with postgres to select a profile object by its primary key.
- * @param messageId a string containing the primary key for the target object.
+ * @param messageRecipientId a string containing the primary key for the target object.
  * @return A promise containing a status object with the primary key provided or null if no id was found
  **/
 // Export async function for selecting Messages by messageId.
-export async function selectMessageByRecipientId (messageId: string): Promise<Message|null> {
-  const result = await sql <Message[]>
-    `SELECT "messageId", "messageRecipientId", "messageSenderId", "messageContent", "messageDateTime", "messageSentBy" from message 
-    WHERE "messageId" = ${messageId}`
-  return result?.length === 1 ? result[0] : null
+export async function selectMessageByRecipientId (messageRecipientId: string): Promise<Message[]> {
+  return sql<Message[]> `SELECT "messageId", "messageRecipientId", "messageSenderId", "messageContent", "messageDateTime", "messageSentBy" from message 
+WHERE "messageRecipientId" = ${messageRecipientId}`
 }
 
 /**
  * Helper function that interacts with postgres to select a profile object by its primary key.
- * @param messageId a string containing the primary key for the target object.
+ * @param messageSenderId a string containing the primary key for the target object.
  * @return A promise containing a status object with the primary key provided or null if no id was found
  **/
 // Export async function for selecting Messages by messageId.
-export async function selectMessageBySenderId (messageId: string): Promise<Message|null> {
-  const result = await sql <Message[]>
-    `SELECT "messageId", "messageRecipientId", "messageSenderId", "messageContent", "messageDateTime", "messageSentBy" from message 
-    WHERE "messageId" = ${messageId}`
-  return result?.length === 1 ? result[0] : null
+export async function selectMessageBySenderId (messageSenderId: string): Promise<Message[]> {
+  return sql<Message[]> `SELECT "messageId", "messageRecipientId", "messageSenderId", "messageContent", "messageDateTime", "messageSentBy" from message 
+WHERE "messageSenderId" = ${messageSenderId}`
 }

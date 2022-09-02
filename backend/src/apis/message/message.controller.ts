@@ -50,6 +50,7 @@ export async function postMessage (request: Request, response: Response): Promis
 export async function getMessageByMessageRecipientId (request: Request, response: Response): Promise<Response<Status>> {
   try {
     const { messageRecipientId } = request.params
+    console.log("Well well well", messageRecipientId)
     const data = await selectMessageByRecipientId(messageRecipientId)
     // return the response
     const status: Status = { status: 200, message: null, data }
@@ -57,7 +58,7 @@ export async function getMessageByMessageRecipientId (request: Request, response
   } catch (error) {
     return response.json({
       status: 500,
-      message: '',
+      message: 'Its me all along',
       data: []
     })
   }
@@ -67,6 +68,7 @@ export async function getMessageByMessageRecipientId (request: Request, response
 export async function getMessageByMessageSenderId (request: Request, response: Response): Promise<Response<Status>> {
   try {
     const { messageSenderId } = request.params
+    console.log("Yep that would be me", messageSenderId)
     const data = await selectMessageBySenderId(messageSenderId)
     // return the response
     const status: Status = { status: 200, message: null, data }
@@ -74,7 +76,7 @@ export async function getMessageByMessageSenderId (request: Request, response: R
   } catch (error) {
     return response.json({
       status: 500,
-      message: '',
+      message: 'Nope air ball',
       data: []
     })
   }

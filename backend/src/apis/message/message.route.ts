@@ -11,9 +11,9 @@ messageRoute.route('/')
   .post(isLoggedInController, asyncValidatorController([check('messageId', 'Please provide a valid MessageId').isUUID()]), postMessage)
 
 // Route for getting messages from Recipient.
-messageRoute.route('/:messageId')
-  .get(isLoggedInController,([check('messageId', 'Please provide a valid messageRecipientId').isUUID()]), getMessageByMessageRecipientId)
+messageRoute.route('/:messageRecipientId')
+  .get(isLoggedInController, asyncValidatorController([check('messageId', 'Please provide a valid messageRecipientId').isUUID()]), getMessageByMessageRecipientId)
 
 // Route for getting Messages from Sender
-messageRoute.route('/messageId/:messageId')
-  .get(isLoggedInController,([check('messageId', 'Please provide a valid messageSenderId').isUUID()]), getMessageByMessageSenderId)
+messageRoute.route('/:messageSenderId')
+  .get(isLoggedInController, asyncValidatorController([check('messageId', 'Please provide a valid messageRecipientId').isUUID()]), getMessageByMessageSenderId)
