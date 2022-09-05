@@ -1,19 +1,29 @@
 import { Router } from 'express'
-import { gameController } from './game.controller'
+import { getAllGamesController, getGameByGameId, postGameController } from './game.controller'
+import { isLoggedIn } from '../../utils/controllers/isLoggedIn.controller'
+import { asyncValidatorController } from '../../utils/controllers/async-validator.controller'
+import { check, checkSchema } from 'express-validator'
+import { gameValidator } from './game.validator'
 
 export const gameRoute = Router()
 
+gameRoute.route('/:gameId')
+  .get(asyncValidatorController([check("gameId", "please provide a valid gameId").isUUID()]),getGameByGameId)
+
 gameRoute.route('/')
-  .get(gameController)
+  .get(getAllGamesController)
 
-/***
- import {Router} from "express";
- import {asyncValidatorController} from "../../utils/controllers/async-Validator.controller";
- import {check, checkSchema} from "express-validator";
- import {isLoggedInController} from "../../utils/controllers/isLoggedIn.controller";
- import {gameValidator} from "./game.validator";
+.post(isLoggedIn, asyncValidatorController(checkSchema(gameValidator)),postGameController)
 
- export const GameRoute: Router = Router();
- GameRoute.route('/').post(putGameController);
- GameRoute.route("/:gameId").get(asyncValidatorController([check("gameId", "please provide a valid gameId").isUUID()]), getgameBygameId).put(isLoggedInController, asyncValidatorController(checkSchema(gameValidator)), putgameController)
- import {getGameBygameId, putGameController} from "./game.controller";/***
+
+
+
+
+
+
+
+
+
+
+
+
