@@ -46,7 +46,7 @@ export async function signUpController(request: Request, response: Response): Pr
 
     const status: Status = {
       status: 200,
-      message: 'models created please check your email.',
+      message: 'Welcome, profile created successfully.',
       data: null
     }
 

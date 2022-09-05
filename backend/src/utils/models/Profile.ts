@@ -20,9 +20,9 @@ export interface PartialProfile {
   profileName: string,
   profilePlatform: string | null
 }
-export async function selectProfileByProfileActivationToken(profileActivationToken: string): Promise<Profile|null> {
+export async function profileActivationToken(profileActivationToken: string): Promise<Profile|null> {
   const result = await sql <Profile[]>
-    `SELECT "profileId", "profileActivationToken", "profileEmail", "profileGamertag", "profileHash", "profileImage", "profileName", "profilePlatform" from profile 
+    `SELECT "profileId", "profileActivationToken", "profileEmail", "profileGamertag", "profileHash", "profileImage", "profileName", "profilePlatform" from profile
     WHERE "profileActivationToken" = ${profileActivationToken}`
   return result?.length === 1 ? result[0] : null
 }
@@ -36,7 +36,7 @@ export async function insertProfile (profile: Profile): Promise<string> {
   const { profileId, profileActivationToken, profileEmail, profileGamertag, profileHash, profileImage, profileName, profilePlatform } = profile
   await sql`
   INSERT INTO profile("profileId", "profileActivationToken", "profileEmail", "profileGamertag", "profileHash", "profileImage", "profileName", "profilePlatform")
-  VALUES(gen_random_uuid(), ${profileActivationToken}, ${profileEmail}, ${profileGamertag}, ${profileHash}, ${profileImage}, ${profileName}, ${profilePlatform})`
+  VALUES(gen_random_uuid(), ${profileActivationToken} ${profileEmail}, ${profileGamertag}, ${profileHash}, ${profileImage}, ${profileName}, ${profilePlatform})`
   return 'Profile successfully created'
 }
 /**
@@ -52,16 +52,16 @@ SET "profileActivationToken" = ${profileActivationToken},  "profileEmail" = ${pr
 WHERE "profileId" = ${profileId}`
   return 'Profile updated successfully'
 }
-// /**
-//  * Helper function that interacts with postgres to select a profile object by its primary key.
-//  * @param profileId a string containing the primary key for the target object.
-//  * @return A promise containing a status object with the primary key provided or null if no id was found
-//  **/
-/*
+/**
+ * Helper function that interacts with postgres to select a profile object by its primary key.
+ * @param profileId a string containing the primary key for the target object.
+ * @return A promise containing a status object with the primary key provided or null if no id was found
+ **/
+
 export async function selectPartialProfileByProfileId (profileId: string): Promise<PartialProfile|null> {
-  const result = await sql<Profile[]>`SELECT "profileId", "profileAboutMe", "profileEmail", "profileName" from profile WHERE "profileId" = ${profileId}`
+  const result = await sql<Profile[]>`SELECT "profileId", "profileEmail", "profileName" from profile WHERE "profileId" = ${profileId}`
   return result?.length === 1 ? result[0] : null}
-*/
+
 
 
 /**
