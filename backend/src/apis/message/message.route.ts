@@ -2,16 +2,18 @@ import { Router } from 'express'
 import { isLoggedInController } from '../../utils/controllers/is-logged-in.controller'
 import { asyncValidatorController } from '../../utils/controllers/async-validator.controller'
 import { check, checkSchema } from 'express-validator'
-import { getMessageByMessageRecipientId, getMessageByMessageSenderId } from './message.controller'
+import { getMessageByMessageRecipientId, getMessageByMessageSenderId, postMessage } from './message.controller'
 import { messageValidator } from './message.validator'
 
 export const messageRoute = Router()
-
+// Route for posting messages.
 messageRoute.route('/')
-  .post(isLoggedInController, asyncValidatorController(checkSchema(messageValidator)), )
+  .post(isLoggedInController, asyncValidatorController([check('messageId', 'Please provide a valid MessageId').isUUID()]), postMessage)
 
+// Route for getting messages from Recipient.
 messageRoute.route('/:messageId')
-  .get(asyncValidatorController([check('messageId', 'please provide a valid messageId').isUUID()]), getMessageByMessageRecipientId)
-  .put(isLoggedInController, asyncValidatorController(checkSchema(messageValidator)), getMessageByMessageRecipientId)
+  .get(isLoggedInController,([check('messageId', 'Please provide a valid messageRecipientId').isUUID()]), getMessageByMessageRecipientId)
 
-messageRoute.route('/messageId/:messageId').get(asyncValidatorController([check('messageId', 'please provide a valid gamertagId').isUUID()]), getMessageByMessageSenderId)
+// Route for getting Messages from Sender
+messageRoute.route('/messageId/:messageId')
+  .get(isLoggedInController,([check('messageId', 'Please provide a valid messageSenderId').isUUID()]), getMessageByMessageSenderId)

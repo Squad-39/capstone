@@ -2,13 +2,25 @@ import { Schema } from 'express-validator'
 
 export const gameSquadValidator: Schema = {
   gameSquadGameId: {
-    isUUID: {
-      errorMessage: 'please provide a valid gameSquadGameId'
-    }
+    escape: true,
+    trim: true,
+    optional: {
+      options: {
+        nullable: true
+        // errorMessage: 'please provide a valid gameSquadGameId'
+      }
+    },
   },
+
+
   gameSquadSquadId: {
-    isUUID: {
-      errorMessage: 'please provide a valid gameSquadSquadId'
-    }
-  }
+    escape: true,
+    trim: true,
+    optional: {
+      options: {
+        nullable: true
+        // errorMessage: 'please provide a valid gameSquadSquadId'
+      }
+    },
+  },
 }

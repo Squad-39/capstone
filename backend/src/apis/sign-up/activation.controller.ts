@@ -6,6 +6,7 @@ import {
   insertProfile} from '../../utils/models/Profile'
 
 
+
 export async function activationController(request: Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>> {
   try {
     const { activation } = request.params

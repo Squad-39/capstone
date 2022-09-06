@@ -9,13 +9,15 @@ export interface GameSquad {
 export async function selectGameSquadsByGameSquadGameId (gameSquad: GameSquad): Promise<string> {
   const {gameSquadGameId, gameSquadSquadId} = gameSquad
 
-  await sql`<SELECT []> gameSquad( "gameSquadGameId", "gameSquadSquadId") VALUES(gen_random_uuid(), ${gameSquadGameId} ${gameSquadSquadId})`
+  await sql`<SELECT gameSquad( "gameSquadGameId", "gameSquadSquadId") 
+   VALUES(${gameSquadGameId}, ${gameSquadSquadId})`
   return 'Squad game selected successfully'
 }
 export async function selectGameSquadsByGameSquadSquadId (gameSquad: GameSquad): Promise<string> {
   const {gameSquadGameId, gameSquadSquadId} = gameSquad
 
-  await sql`<SELECT gameSquad( "gameSquadGameId", "gameSquadSquadId") VALUES(gen_random_uuid(), ${gameSquadSquadId})`
+  await sql`<SELECT gameSquad( "gameSquadGameId", "gameSquadSquadId") 
+  VALUES( ${gameSquadGameId}, ${gameSquadSquadId})`
   return 'Squad game selected successfully'
 }
 
@@ -29,8 +31,8 @@ Promise<GameSquad | null> {
 export async function insertGameSquad (gameSquad: GameSquad): Promise<string> {
   const { gameSquadGameId, gameSquadSquadId} = gameSquad
 
-  await sql`INSERT INTO ticket( "gameSquadGameId", "gameSquadSquadId") VALUES(gen_random_uuid(), ${gameSquadGameId}, ${gameSquadSquadId})`
-  return 'Ticket created successfully'
+  await sql`INSERT INTO gameSquad( "gameSquadGameId", "gameSquadSquadId") VALUES(gen_random_uuid(), ${gameSquadSquadId})`
+  return 'gameSquad created successfully'
 }
 
 

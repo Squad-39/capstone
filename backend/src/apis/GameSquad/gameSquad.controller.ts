@@ -1,46 +1,46 @@
 import { Request, Response } from 'express'
 import { Status } from '../../utils/interfaces/Status'
 import { Profile } from '../../utils/models/Profile'
-import { selectGameSquadsByGameSquadGameId, selectGameSquadsByGameSquadSquadId, insertGameSquad, selectGameSquadById, GameSquad
+import { insertGameSquad, GameSquad, selectGameSquadsByGameSquadSquadId, selectGameSquadById, selectGameSquadsByGameSquadGameId
 } from "../../utils/models/GameSquad";
 
 export async function getGameSquadsByGameSquadGameId (request: Request, response: Response): Promise<Response<Status>> {
   try {
-    const { gameSquadGameId } = request.params
-    const data = await (gameSquadGameId)
+    const { gameSquadGameId } = request.body
+    const data = await selectGameSquadsByGameSquadGameId(gameSquadGameId)
     // return the response
-    const status: Status = { status: 200, message: null, data }
+    const status: Status = { status: 200, message: "GOT EM", data }
     return response.json(status)
   } catch (error) {
     return response.json({
       status: 500,
-      message: '',
+      message: 'here',
       data: []
     })
   }
 }
 export async function getGameSquadsByGameSquadSquadId (request: Request, response: Response): Promise<Response<Status>> {
   try {
-    const { gameSquadSquadId } = request.params
-    const data = await  (gameSquadSquadId)
+    const { gameSquadSquadId } = request.body
+    const data = await selectGameSquadsByGameSquadSquadId(gameSquadSquadId)
     // return the response
-    const status: Status = { status: 200, message: null, data }
+    const status: Status = { status: 200, message: "got IT", data }
     return response.json(status)
   } catch (error) {
     return response.json({
       status: 500,
-      message: '',
+      message: 'or here?',
       data: []
     })
   }
 }
-  export async function postGameSquadsByGameSquadSquadId (request: Request, response: Response): Promise<Response<Status>> {
+  export async function postGameSquad (request: Request, response: Response): Promise<Response<Status>> {
     try {
-      const {gameSquadSquadId } = request.body
+      const {gameSquadSquadId, gameSquadGameId } = request.body
 
       // Grab the gameSquadId from the session
       const profile = request.session.profile as Profile
-      const gameSquadGameId = profile.profileId as string
+      const squadProfileId = profile.profileId as string
 
       const gameSquad: GameSquad = { gameSquadGameId, gameSquadSquadId}
       const result = await insertGameSquad(gameSquad)
@@ -53,7 +53,7 @@ export async function getGameSquadsByGameSquadSquadId (request: Request, respons
     } catch (error) {
       return response.json({
         status: 500,
-        message: 'Error creating ticket try again later.',
+        message: 'Error getting gameSquadId try again later.',
         data: null
       })
     }
