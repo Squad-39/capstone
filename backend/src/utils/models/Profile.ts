@@ -35,7 +35,7 @@ export async function insertProfile (profile: Profile): Promise<string> {
   const { profileId, profileActivationToken, profileEmail, profileGamertag, profileHash, profileImage, profileName, profilePlatform } = profile
   await sql`
   INSERT INTO profile("profileId", "profileActivationToken", "profileEmail", "profileGamertag", "profileHash", "profileImage", "profileName", "profilePlatform")
-  VALUES(gen_random_uuid(), ${profileActivationToken} ${profileEmail}, ${profileGamertag}, ${profileHash}, ${profileImage}, ${profileName}, ${profilePlatform})`
+  VALUES(gen_random_uuid(), ${profileActivationToken}, ${profileEmail}, ${profileGamertag}, ${profileHash}, ${profileImage}, ${profileName}, ${profilePlatform})`
   return 'Profile successfully created'
 }
 /**

@@ -4,7 +4,7 @@ import {
   getRequestsByRequestProfileId,
   postRequestController, putRequestController
 } from './request.controller'
-import { isLoggedInController } from '../../utils/controllers/isLoggedin.controller'
+import { isLoggedInController } from '../../utils/controllers/is-logged-in.controller'
 import { asyncValidatorController } from '../../utils/controllers/async-validator.controller'
 import { check, checkSchema } from 'express-validator'
 import { requestValidator } from './request.validator'

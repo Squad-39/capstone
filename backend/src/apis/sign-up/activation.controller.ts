@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { NextFunction, Request, Response } from 'express'
-import { Status } from '../../utils/interfaces/Status'
-import { updateProfile, Profile, selectProfileByProfileActivationToken } from '../../utils/models/Profile'
-=======
+
 import {NextFunction, Request, Response} from "express";
 import {Status} from '../../utils/interfaces/Status';
 import {
@@ -10,7 +6,6 @@ import {
   selectProfileByProfileActivationToken,
   insertProfile
 } from '../../utils/models/Profile'
->>>>>>> 97d622f1a5d03ed7bd2b9b337f4fe091ba3810ed
 
 export async function activationController (request: Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>> {
   try {
@@ -31,17 +26,11 @@ function activationFailed (response: Response): Response {
   })
 }
 
-<<<<<<< HEAD
-async function activationSucceeded (profile: Profile, response: Response): Promise<Response> {
-  const updatedProfile = { ...profile, profileActivationToken: null }
-  console.log(updatedProfile)
-  await updateProfile(updatedProfile)
-=======
+
 async function activationSucceeded (profile: Profile, response: Response):Promise<Response>  {
   const Profile = {...profile, profileActivationToken: null}
   console.log(Profile)
   await insertProfile(Profile)
->>>>>>> 97d622f1a5d03ed7bd2b9b337f4fe091ba3810ed
   return response.json({
     status: 200,
     data: null,

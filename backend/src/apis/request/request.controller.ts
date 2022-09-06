@@ -84,6 +84,7 @@ export async function getRequestByRequestProfileIdAndRequestSquadId (req: Req, r
     const { requestSquadId } = req.body
     const profile: Profile = req.session.profile as Profile
     const requestProfileId: string = <string>profile.profileId
+    console.log(requestProfileId)
     const request: Request = { requestProfileId, requestSquadId, requestStatus: null }
     const result = await insertRequest(request)
     const Status: Status = {

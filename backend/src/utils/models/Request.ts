@@ -13,10 +13,10 @@ export interface Request {
  * @return success message if the sql statement was executed with no errors
  **/
 export async function insertRequest (request: Request): Promise<string> {
-  const { requestProfileId, requestSquadId, requestStatus } = request
+  const { requestProfileId, requestSquadId } = request
   await sql`
   INSERT INTO request("requestProfileId", "requestSquadId", "requestStatus")
-  VALUES(${requestProfileId}, ${requestSquadId}, ${requestStatus} )`
+  VALUES(${requestProfileId}, ${requestSquadId}, null )`
   return 'Request successfully sent'
 }
 export async function deleteRequest (request: Request): Promise<string> {
@@ -41,7 +41,7 @@ export async function selectRequestByProfileIdAndSquadId (profileId: string, squ
                                       FROM request WHERE "requestProfileId" = ${profileId} AND "requestSquadId" = ${squadId}`
   return result?.length === 1 ? result[0] : null
 }
-// Id = Composite Id of both profileId and SquadId.
+// Id = Composite Id of both profileId and squadId.
 export async function selectRequestByIdAndSquadProfileId (request: Request, squadProfileId: string):
   Promise<Request | null> {
   const {requestProfileId, requestSquadId}= request

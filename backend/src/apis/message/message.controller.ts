@@ -15,6 +15,7 @@ export async function postMessage (request: Request, response: Response): Promis
     const { messageContent, messageDateTime, messageSenderId, messageRecipientId, messageSentBy } = request.body
     console.log("This is the message I see", messageContent)
     console.log("This is the DateTime I see", messageDateTime)
+    // @ts-ignore
     const profile: Profile = request.session.profile as Profile
     const messageId: string = <string>profile.profileId
     console.log("This is the messageId I'm seeing", messageId)

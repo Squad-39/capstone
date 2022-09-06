@@ -10,6 +10,7 @@ import {signInRoute} from "./apis/sign-in/sign-in.route"
 import {SignOutRoute} from "./apis/sign-out/sign-out.route"
 import { squadRouter } from "./apis/squad/squad.route"
 import { messageRoute } from './apis/message/message.route'
+import { requestRoute } from './apis/request/request.route'
 
 
 const redisClient = createClient({ legacyMode: true, socket: { host: process.env.REDIS_HOST } })
@@ -57,6 +58,7 @@ export class App {
     this.app.use("/apis/sign-out", SignOutRoute)
     this.app.use("/apis/squad", squadRouter)
     this.app.use("/apis/message", messageRoute)
+    this.app.use("/apis/request", requestRoute)
   }
 
   // starts the server and tells the terminal to post a Message.ts that the server is running and on what port
