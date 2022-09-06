@@ -67,11 +67,11 @@ export async function getMessageByMessageRecipientId (request: Request, response
 // Export async function for selecting Messages from Sender.
 export async function getMessageByMessageSenderId (request: Request, response: Response): Promise<Response<Status>> {
   try {
+
     const { messageSenderId } = request.params
-    console.log("Yep that would be me", messageSenderId)
     const data = await selectMessageBySenderId(messageSenderId)
     // return the response
-    const status: Status = { status: 200, message: null, data }
+    const status: Status = {status: 200, message: null, data}
     return response.json(status)
   } catch (error) {
     return response.json({

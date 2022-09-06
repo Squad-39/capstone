@@ -10,6 +10,8 @@ export const squadRouter = Router();
 squadRouter.route('/')
   .post(isLoggedInController, asyncValidatorController(checkSchema(squadValidator)), postSquadController)
 
+  .get(isLoggedInController, asyncValidatorController(checkSchema(squadValidator)), getSquadBySquadId);
+
 //Route for getting Squad by SquadId.
 squadRouter.route('/:squadId')
   .get(asyncValidatorController([check('squadId', 'please provide a valid squadId').isUUID()]), getSquadBySquadId)
@@ -17,3 +19,4 @@ squadRouter.route('/:squadId')
 //Route for updating Squad.
 squadRouter.route('/:squadId')
   .put(isLoggedInController, asyncValidatorController(checkSchema(squadValidator)), putSquadController)
+
