@@ -15,8 +15,8 @@ export async function putProfileController (request: Request, response: Response
     if (profileId !== profileIdFromSession) {
       return response.json({status: 400, data: null, message: 'You are not allowed to preform this task'})
     }
-    const { profileEmail, profileName } = request.body
-    const updatedValues = { profileEmail, profileName }
+    const {profileEmail, profileGamertag, profileName, profilePlatform} = request.body
+    const updatedValues = {profileEmail, profileGamertag, profileName, profilePlatform}
     const previousProfile: Profile = await selectPartialProfileByProfileId(profileId) as Profile
 
     const newProfile: Profile = { ...previousProfile, ...updatedValues }

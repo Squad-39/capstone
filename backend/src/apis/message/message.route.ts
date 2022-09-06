@@ -8,13 +8,12 @@ import { messageValidator } from './message.validator'
 export const messageRoute = Router()
 // Route for posting messages.
 messageRoute.route('/')
-  .post(isLoggedInController, asyncValidatorController(checkSchema(messageValidator)), postMessage)
+  .post(isLoggedInController, asyncValidatorController([check('messageId', 'Please provide a valid MessageId').isUUID()]), postMessage)
 
 // Route for getting messages from Recipient.
-messageRoute.route('/:messageId')
-  .get(asyncValidatorController([check('messageId', 'please provide a valid messageId').isUUID()]), getMessageByMessageRecipientId)
-
-  .put(isLoggedInController, asyncValidatorController(checkSchema(messageValidator)), getMessageByMessageRecipientId)
+messageRoute.route('/:messageRecipientId')
+  .get(isLoggedInController, asyncValidatorController([check('messageId', 'Please provide a valid messageRecipientId').isUUID()]), getMessageByMessageRecipientId)
 
 // Route for getting Messages from Sender
-messageRoute.route('/messageId/:messageId').get(asyncValidatorController([check('messageId', 'please provide a valid gamertagId').isUUID()]), getMessageByMessageSenderId)
+messageRoute.route('/:messageSenderId')
+  .get(isLoggedInController, asyncValidatorController([check('messageId', 'Please provide a valid messageRecipientId').isUUID()]), getMessageByMessageSenderId)

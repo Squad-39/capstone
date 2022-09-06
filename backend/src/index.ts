@@ -1,14 +1,12 @@
 import { App } from './App'
 import {Profile} from "./utils/models/Profile";
 import { Squad } from './utils/models/Squad'
-import { Message } from './utils/models/Message'
 
 
 declare module 'express-session' {
   export interface SessionData {
     profile: Profile|undefined;
     squad: Squad|undefined;
-    message: Message|undefined;
     signature: string|undefined;
     jwt: string|undefined
   }
@@ -24,4 +22,7 @@ async function main (): Promise<void> {
   }
 }
 
+
 main().catch(error => { console.error(error) })
+
+

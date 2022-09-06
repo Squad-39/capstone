@@ -3,9 +3,9 @@ import {NextFunction, Request, Response} from "express";
 import {Status} from '../../utils/interfaces/Status';
 import {
   Profile,
-  selectProfileByProfileActivationToken,
-  insertProfile
-} from '../../utils/models/Profile'
+ selectProfileByProfileActivationToken,
+  insertProfile} from '../../utils/models/Profile'
+
 
 export async function activationController (request: Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>> {
   try {

@@ -16,4 +16,16 @@ profileRoute.route('/:profileId')
     ])
     , getProfileByProfileIdController
   )
+<<<<<<< HEAD
   .put(isLoggedInController, asyncValidatorController(checkSchema(profileValidator)), putProfileController)
+=======
+profileRoute.route('/:profileId')
+  .put(isLoggedInController, asyncValidatorController(checkSchema(profileValidator)), putProfileController)
+
+
+
+
+
+
+
+>>>>>>> 81d5eb6eee73b01e1a6d0167c17a3c651e3b7175

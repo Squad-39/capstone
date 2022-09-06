@@ -13,12 +13,17 @@ import { Profile } from '../../utils/models/Profile'
 export async function postMessage (request: Request, response: Response): Promise<Response<Status>> {
   try {
     const { messageContent, messageDateTime, messageSenderId, messageRecipientId, messageSentBy } = request.body
+<<<<<<< HEAD
     console.log("This is the message I see", messageContent)
     console.log("This is the DateTime I see", messageDateTime)
     // @ts-ignore
+=======
+    // console.log("This is the message I see", messageContent)
+    // console.log("This is the DateTime I see", messageDateTime)
+>>>>>>> 81d5eb6eee73b01e1a6d0167c17a3c651e3b7175
     const profile: Profile = request.session.profile as Profile
     const messageId: string = <string>profile.profileId
-    console.log("This is the messageId I'm seeing", messageId)
+    // console.log("This is the messageId I'm seeing", messageId)
     const message: Message = {
       messageId,
       messageRecipientId,
@@ -27,9 +32,9 @@ export async function postMessage (request: Request, response: Response): Promis
       messageDateTime,
       messageSentBy
     }
-    console.log("This is the RecipientId I see.", messageRecipientId)
-    console.log("This is the SenderId I see.", messageSenderId)
-    console.log("This is who the message is SentBy", messageSentBy)
+    // console.log("This is the RecipientId I see.", messageRecipientId)
+    // console.log("This is the SenderId I see.", messageSenderId)
+    // console.log("This is who the message is SentBy", messageSentBy)
     const result = await insertMessage(message)
     // return the response
     const status: Status = {
@@ -43,7 +48,7 @@ export async function postMessage (request: Request, response: Response): Promis
       status: 500,
       message: 'Error sending message.',
       data: null
-    });
+    })
   }
 }
 
@@ -51,6 +56,7 @@ export async function postMessage (request: Request, response: Response): Promis
 export async function getMessageByMessageRecipientId (request: Request, response: Response): Promise<Response<Status>> {
   try {
     const { messageRecipientId } = request.params
+    console.log("Well well well", messageRecipientId)
     const data = await selectMessageByRecipientId(messageRecipientId)
     // return the response
     const status: Status = { status: 200, message: null, data }
@@ -58,7 +64,7 @@ export async function getMessageByMessageRecipientId (request: Request, response
   } catch (error) {
     return response.json({
       status: 500,
-      message: '',
+      message: 'Its me all along',
       data: []
     })
   }
@@ -67,15 +73,16 @@ export async function getMessageByMessageRecipientId (request: Request, response
 // Export async function for selecting Messages from Sender.
 export async function getMessageByMessageSenderId (request: Request, response: Response): Promise<Response<Status>> {
   try {
+
     const { messageSenderId } = request.params
     const data = await selectMessageBySenderId(messageSenderId)
     // return the response
-    const status: Status = { status: 200, message: null, data }
+    const status: Status = {status: 200, message: null, data}
     return response.json(status)
   } catch (error) {
     return response.json({
       status: 500,
-      message: '',
+      message: 'Nope air ball',
       data: []
     })
   }

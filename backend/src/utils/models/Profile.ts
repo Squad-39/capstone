@@ -12,6 +12,7 @@ export interface Profile {
 }
 
 export interface PartialProfile {
+
   profileId: string | null
   profileActivationToken: string | null
   profileEmail: string
@@ -21,8 +22,8 @@ export interface PartialProfile {
   profilePlatform: string | null
 }
 export async function selectProfileByProfileActivationToken (profileActivationToken: string): Promise<Profile|null> {
-  const result = await sql <Profile[]>`SELECT "profileId", "profileActivationToken", "profileEmail", "profileGamertag", "profileHash", "profileImage", "profileName", "profilePlatform" from profile 
-    WHERE "profileActivationToken" = ${profileActivationToken}`
+  const result = await sql <Profile[]>`SELECT "profileId", "profileActivationToken", "profileEmail", "profileGamertag", "profileHash", "profileImage", "profileName", "profilePlatform" from profile
+                                       WHERE "profileActivationToken" = ${profileActivationToken}`
   return result?.length === 1 ? result[0] : null
 }
 
@@ -35,7 +36,9 @@ export async function insertProfile (profile: Profile): Promise<string> {
   const { profileId, profileActivationToken, profileEmail, profileGamertag, profileHash, profileImage, profileName, profilePlatform } = profile
   await sql`
   INSERT INTO profile("profileId", "profileActivationToken", "profileEmail", "profileGamertag", "profileHash", "profileImage", "profileName", "profilePlatform")
+
   VALUES(gen_random_uuid(), ${profileActivationToken}, ${profileEmail}, ${profileGamertag}, ${profileHash}, ${profileImage}, ${profileName}, ${profilePlatform})`
+
   return 'Profile successfully created'
 }
 /**
@@ -43,11 +46,13 @@ export async function insertProfile (profile: Profile): Promise<string> {
  * @param profile Profile object that will be updated into the database
  * @return success Message.ts if the sql statement was executed with no errors
  **/
-export async function updateProfile (profile: Profile): Promise<string> {
-  const { profileActivationToken, profileEmail, profileGamertag, profileImage, profileName, profilePlatform, profileId } = profile
+export async function updateProfile (profile: PartialProfile): Promise<string> {
+  const { profileEmail, profileGamertag, profileName, profilePlatform, profileId } = profile
+  console.log(profile)
   await sql`
+
 UPDATE "profile" 
-SET "profileActivationToken" = ${profileActivationToken},  "profileEmail" = ${profileEmail}, "profileGamertag" = ${profileGamertag}, "profileImage" = ${profileImage}, "profileName" = ${profileName}, "profilePlatform" = ${profilePlatform}
+SET  "profileEmail" = ${profileEmail}, "profileGamertag" = ${profileGamertag}, "profileName" = ${profileName}, "profilePlatform" = ${profilePlatform}, "profileId" = ${profileId}
 WHERE "profileId" = ${profileId}`
   return 'Profile updated successfully'
 }
@@ -58,7 +63,7 @@ WHERE "profileId" = ${profileId}`
  **/
 
 export async function selectPartialProfileByProfileId (profileId: string): Promise<PartialProfile|null> {
-  const result = await sql<Profile[]>`SELECT "profileId", "profileEmail", "profileName" from profile WHERE "profileId" = ${profileId}`
+  const result = await sql<Profile[]>`SELECT "profileId", "profileEmail", "profileGamertag", "profileImage", "profileName", "profilePlatform" from profile WHERE "profileId" = ${profileId}`
   return result?.length === 1 ? result[0] : null}
 
 
@@ -71,4 +76,3 @@ export async function selectProfileByProfileEmail (profileEmail: string): Promis
   const result = await sql <Profile[]>`SELECT "profileId", "profileEmail", "profileHash", "profileName" from profile WHERE "profileEmail" = ${profileEmail}`
   return result?.length === 1 ? result[0] : null
 }
-
