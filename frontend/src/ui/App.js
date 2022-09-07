@@ -16,6 +16,5 @@ export const App = () => (
         <Route path="/squadlead" element={< SquadLead />} />
       </Routes>
     </BrowserRouter>
-
   </>
 )
