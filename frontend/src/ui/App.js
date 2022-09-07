@@ -15,6 +15,7 @@ export const App = () => (
     <BrowserRouter>
       <Navigation/>
       <Routes>
+
         <Route  path='/' element={<Home />} />
         <Route path="*" element={<FourOhFour />} />
 

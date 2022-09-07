@@ -1,18 +1,21 @@
-import React from 'react'
-import { Container, Nav, Navbar } from 'react-bootstrap'
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
 export function Navigation() {
   return (
-    <Container fluid>
-      <Navbar.Brand href="/">Home</Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="ms-auto">
-          <Nav.Link href="/sign-up">Sign Up</Nav.Link>
-          <Nav.Link href="/squads">Squads</Nav.Link>
-          <Nav.Link href="/aboutus">About Us</Nav.Link>
-        </Nav>
-      </Navbar.Collapse>
-    </Container>
-  )
+    <>
+      <Navbar bg="dark" variant="dark">
+          <Navbar.Brand href="/">Squad</Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link href="#signin">Sign In</Nav.Link>
+            <Nav.Link href="/sign-up">Sign Up</Nav.Link>
+            <Nav.Link href="/squads">Squads</Nav.Link>
+            <Nav.Link href="/profile">Profile</Nav.Link>
+            <Nav.Link href="#aboutus">About Us</Nav.Link>
+            <Nav.Link href="#contactus">Contact Us</Nav.Link>
+          </Nav>
+      </Navbar>
+      <br />
+    </>
+  );
 }
