@@ -5,13 +5,23 @@ import { FourOhFour } from './FourOhFour'
 import React from 'react'
 import { SignUp } from './Sign-Up'
 
+import { Profile } from './Profile'
+import { Squads } from './Squads'
+import { SquadLead } from './SquadLead'
+
 export const App = () => (
   <>
     <BrowserRouter>
       <Routes>
         <Route  path='/' element={<Home />} />
         <Route path="*" element={<FourOhFour />} />
+
         <Route path="/sign-up" element={<SignUp />} />
+
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/squads" element={< Squads />} />
+        <Route path="/squadlead" element={< SquadLead />} />
+
       </Routes>
     </BrowserRouter>
   </>
