@@ -13,17 +13,17 @@ import { Navigation } from './Navigation'
 export const App = () => (
   <>
     <BrowserRouter>
-      <Navigation/>
+      <Navigation />
       <Routes>
 
-        <Route  path='/' element={<Home />} />
-        <Route path="*" element={<FourOhFour />} />
+        <Route path='/' element={<Home />} />
+        <Route path='*' element={<FourOhFour />} />
 
-        <Route path="/sign-up" element={<SignUp />} />
+        <Route path='/sign-up' element={<SignUp />} />
 
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/squads" element={< Squads />} />
-        <Route path="/squadlead" element={< SquadLead />} />
+        <Route path='/profile' element={<Profile />} />
+        <Route path='/squads' element={<Squads />} />
+        <Route path='/squadlead' element={<SquadLead />} />
 
       </Routes>
     </BrowserRouter>

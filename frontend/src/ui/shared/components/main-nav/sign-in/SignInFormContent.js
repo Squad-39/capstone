@@ -1,6 +1,6 @@
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {FormDebugger} from "../../FormDebugger";
-import React from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FormDebugger } from '../../FormDebugger'
+import React from 'react'
 
 export const SignInFormContent = (props) => {
   const {
@@ -15,25 +15,25 @@ export const SignInFormContent = (props) => {
     handleSubmit,
     handleReset
 
-  } = props;
+  } = props
   return (
     <>
       <form onSubmit={handleSubmit}>
-        {/*controlId must match what is passed to the initialValues prop*/}
-        <div className={"form-group"}>
-          <label htmlFor="profileEmail">Email Address</label>
-          <div className="input-group">
-            <div className="input-group-prepend">
-              <div className="input-group-text">
-                <FontAwesomeIcon icon="envelope"/>
+        {/* controlId must match what is passed to the initialValues prop */}
+        <div className='form-group'>
+          <label htmlFor='profileEmail'>Email Address</label>
+          <div className='input-group'>
+            <div className='input-group-prepend'>
+              <div className='input-group-text'>
+                <FontAwesomeIcon icon='envelope' />
               </div>
             </div>
             <input
-              className="form-control"
-              id="profileEmail"
-              type="email"
+              className='form-control'
+              id='profileEmail'
+              type='email'
               value={values.profileEmail}
-              placeholder="Enter email"
+              placeholder='Enter email'
               onChange={handleChange}
               onBlur={handleBlur}
 
@@ -41,40 +41,40 @@ export const SignInFormContent = (props) => {
           </div>
           {
             errors.profileEmail && touched.profileEmail && (
-              <div className="alert alert-danger">
+              <div className='alert alert-danger'>
                 {errors.profileEmail}
               </div>
             )
           }
         </div>
-        {/*controlId must match what is defined by the initialValues object*/}
-        <div className="form-group">
-          <label htmlFor="profilePassword">Password</label>
-          <div className="input-group">
-            <div className="input-group-prepend">
-              <div className="input-group-text">
-                <fontAwesomeIcon icon="key"/>
+        {/* controlId must match what is defined by the initialValues object */}
+        <div className='form-group'>
+          <label htmlFor='profilePassword'>Password</label>
+          <div className='input-group'>
+            <div className='input-group-prepend'>
+              <div className='input-group-text'>
+                <fontAwesomeIcon icon='key' />
               </div>
             </div>
             <input
-              id="profilePassword"
-              className="form-control"
-              type="password"
-              placeholder="Password"
+              id='profilePassword'
+              className='form-control'
+              type='password'
+              placeholder='Password'
               value={values.profilePassword}
               onChange={handleChange}
               onBlur={handleBlur}
             />
           </div>
           {errors.profilePassword && touched.profilePassword && (
-            <div className="alert alert-danger">{errors.profilePassword}</div>
+            <div className='alert alert-danger'>{errors.profilePassword}</div>
           )}
         </div>
 
-        <div className="form-group">
-          <button className="btn btn-primary mb-2" type="submit">Submit</button>
+        <div className='form-group'>
+          <button className='btn btn-primary mb-2' type='submit'>Submit</button>
           <button
-            className="btn btn-danger mb-2"
+            className='btn btn-danger mb-2'
             onClick={handleReset}
             disabled={!dirty || isSubmitting}
           >Reset
@@ -85,4 +85,4 @@ export const SignInFormContent = (props) => {
       {status && (<div className={status.type}>{status.message}</div>)}
     </>
   )
-};
+}

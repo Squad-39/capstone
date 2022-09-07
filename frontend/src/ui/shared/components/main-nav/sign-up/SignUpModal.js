@@ -1,18 +1,16 @@
-import React, {useState} from "react";
-import {Button} from "react-bootstrap";
-import {Modal} from "react-bootstrap";
-import {SignUpForm} from "./SignUpForm";
-
+import React, { useState } from 'react'
+import { Button, Modal } from 'react-bootstrap'
+import { SignUpForm } from './SignUpForm'
 
 export const SignUpModal = () => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant='primary' onClick={handleShow}>
         Sign Up
       </Button>
 
@@ -21,17 +19,17 @@ export const SignUpModal = () => {
           <Modal.Title>Sign Up</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <SignUpForm/>
+          <SignUpForm />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant='secondary' onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant='primary' onClick={handleClose}>
             Save Changes
           </Button>
         </Modal.Footer>
       </Modal>
     </>
-  );
+  )
 }
