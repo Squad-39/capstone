@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import { Home } from './Home'
 import { FourOhFour } from './FourOhFour'
 import React from 'react'
+import { SignUp } from './Sign-Up'
 
 export const App = () => (
   <>
@@ -10,8 +11,8 @@ export const App = () => (
       <Routes>
         <Route  path='/' element={<Home />} />
         <Route path="*" element={<FourOhFour />} />
+        <Route path="/sign-up" element={<SignUp />} />
       </Routes>
     </BrowserRouter>
-
   </>
 )
