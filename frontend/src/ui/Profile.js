@@ -1,5 +1,5 @@
 import React from "react"
-import AddProfile from '../ui/images/addprofile.jpeg'
+import AddProfile from './images/addprofile.jpeg'
 import Button from 'react-bootstrap/Button';
 
 export const Profile = () => {

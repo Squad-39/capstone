@@ -1,7 +1,7 @@
 import React from "react"
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Controller from '../ui/images/controllericon.png';
+import Controller from './images/controllericon.png';
 import { ListGroup } from 'react-bootstrap'
 import Dropdown from 'react-bootstrap/Dropdown'
 
