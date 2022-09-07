@@ -5,16 +5,16 @@ import * as Yup from 'yup'
 import { Formik } from 'formik'
 import { DisplayError } from './shared/components/display-error/DisplayError'
 import { httpConfig } from '../utils/http-config'
+import { FormDebugger } from './shared/components/FormDebugger'
 
 export function SignUp () {
   const signUp = {
-    profileImage: '',
     profileName: '',
     profileEmail: '',
     profilePassword: '',
     profilePasswordConfirm: '',
     profileGamertag: '',
-    profilePlatform: ''
+    profilePlatform: []
   }
 
   const validator = Yup.object().shape({
@@ -25,8 +25,8 @@ export function SignUp () {
       .required('profile name is required'),
     profileGamertag: Yup.string()
       .required('profile gamer tag is required'),
-    profilePlatform: Yup.string()
-      .required('profile platform is needed'),
+    profilePlatform: Yup.array()
+      .length(1,'profile platform is needed'),
     profilePassword: Yup.string()
       .required('Password Confirm is required')
       .min(8, 'Password must be at least 8 characters long'),
@@ -86,7 +86,7 @@ export const SignUpFormContent = (props) => {
             type='text'
             placeholder='Enter name' />
         </Form.Group>
-        <DisplayError field='profileName' values={values} touched={touched} />
+        <DisplayError field='profileName' errors={errors}touched={touched} />
         <Form.Group className='mb-3' controlId='profileEmail'>
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -100,7 +100,7 @@ export const SignUpFormContent = (props) => {
             We'll never share your email with anyone else.
           </Form.Text>
         </Form.Group>
-        <DisplayError field='profileEmail' values={values} touched={touched} />
+        <DisplayError field='profileEmail' errors={errors}touched={touched} />
         <Form.Group className='mb-3' controlId='profileGamertag'>
           <Form.Label>Gamertag</Form.Label>
           <Form.Control
@@ -114,7 +114,7 @@ export const SignUpFormContent = (props) => {
             share at your own risk
           </Form.Text>
         </Form.Group>
-        <DisplayError field='profileGamertag' values={values} touched={touched} />
+        <DisplayError field='profileGamertag' errors={errors}touched={touched} />
         <Form.Group className='mb-3' controlId='profilePassword'>
           <Form.Label>Password</Form.Label>
           <Form.Control
@@ -125,10 +125,14 @@ export const SignUpFormContent = (props) => {
             type='password'
             placeholder='Password' />
         </Form.Group>
-        <DisplayError field='profilePassword' values={values} touched={touched} />
+        <DisplayError field='profilePassword' errors={errors}touched={touched} />
         <h1>Choose your Poison</h1>
         <Form.Group className='mb-3' controlId='formBasicCheckbox'>
-          <Form.Check type='checkbox' label='Epic' />
+          <Form.Check type='checkbox' label='Epic' name='profilePlatform'
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value='Epic'/>
+
         </Form.Group>
         <Form.Group className='mb-3' controlId='formBasicCheckbox'>
           <Form.Check type='checkbox' label='Steam' />
@@ -146,6 +150,7 @@ export const SignUpFormContent = (props) => {
           Submit
         </Button>
       </Form>
+      <FormDebugger {...props} />
     </>
   )
 }

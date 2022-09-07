@@ -24,8 +24,8 @@ export const SignUpForm = () => {
       .required('profile name is required'),
     profileGamertag: Yup.string()
       .required('profile gamer tag is required'),
-    profilePlatform: Yup.string()
-      .required('profile platform is needed'),
+    profilePlatform: Yup.array()
+      .length(1,'profile platform is needed'),
     profilePassword: Yup.string()
       .required('Password Confirm is required')
       .min(8, 'Password must be at least 8 characters long'),

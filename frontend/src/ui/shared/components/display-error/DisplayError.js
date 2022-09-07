@@ -3,7 +3,6 @@ import styles from './DisplayError.module.css'
 
 export function DisplayError (props) {
   const { errors, touched, field } = props
-
   if (errors[field] && touched[field]) {
     return (
       <>
