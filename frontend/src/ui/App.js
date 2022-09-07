@@ -3,7 +3,10 @@ import 'bootstrap/dist/css/bootstrap.css'
 import { Home } from './Home'
 import { FourOhFour } from './FourOhFour'
 import React from 'react'
+
 import { Profile } from './Profile'
+import { Squads } from './Squads'
+import { SquadLead } from './SquadLead'
 
 export const App = () => (
   <>
@@ -12,8 +15,9 @@ export const App = () => (
         <Route  path='/' element={<Home />} />
         <Route path="*" element={<FourOhFour />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/squads" element={< Squads />} />
+        <Route path="/squadlead" element={< SquadLead />} />
       </Routes>
     </BrowserRouter>
-
   </>
 )
