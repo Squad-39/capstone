@@ -7,7 +7,7 @@ export function Navigation () {
       <Navbar bg='dark' variant='dark'>
         <Navbar.Brand href='/'>Squad</Navbar.Brand>
         <Nav className='me-auto'>
-          <Nav.Link href='#signin'>Sign In</Nav.Link>
+          <Nav.Link href='/sign-in'>Sign In</Nav.Link>
           <Nav.Link href='/sign-up'>Sign Up</Nav.Link>
           <Nav.Link href='/squads'>Squads</Nav.Link>
           <Nav.Link href='/profile'>Profile</Nav.Link>

@@ -26,7 +26,8 @@ export function SignUp () {
     profileGamertag: Yup.string()
       .required('profile gamer tag is required'),
     profilePlatform: Yup.array()
-      .length(1,'profile platform is needed'),
+      .min(1,'profile platform is needed')
+      .max(5, 'Please choose at least one Platform'),
     profilePassword: Yup.string()
       .required('Password Confirm is required')
       .min(8, 'Password must be at least 8 characters long'),
@@ -126,30 +127,59 @@ export const SignUpFormContent = (props) => {
             placeholder='Password' />
         </Form.Group>
         <DisplayError field='profilePassword' errors={errors}touched={touched} />
+
+        <Form.Group className='mb-3' controlId='profilePasswordConfirm'>
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control
+            onChange={handleChange}
+            onBlur={handleBlur}
+            name='profilePasswordConfirm'
+            value={values.profilePasswordConfirm}
+            type='password'
+            placeholder='Confirm Profile Password' />
+        </Form.Group>
+        <DisplayError field='profilePassword' errors={errors}touched={touched} />
+
         <h1>Choose your Poison</h1>
         <Form.Group className='mb-3' controlId='formBasicCheckbox'>
           <Form.Check type='checkbox' label='Epic' name='profilePlatform'
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value='Epic'/>
+        </Form.Group>
+          <Form.Group className='mb-3' controlId='formBasicCheckbox'>
+            <Form.Check type='checkbox' label='Steam' name='profilePlatform'
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value='Steam'/>
+          </Form.Group>
+            <Form.Group className='mb-3' controlId='formBasicCheckbox'>
+              <Form.Check type='checkbox' label='Playstation' name='profilePlatform'
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value='Playstation'/>
+            </Form.Group>
+              <Form.Group className='mb-3' controlId='formBasicCheckbox'>
+                <Form.Check type='checkbox' label='Nintendo' name='profilePlatform'
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value='Nintendo'/>
+              </Form.Group>
 
-        </Form.Group>
-        <Form.Group className='mb-3' controlId='formBasicCheckbox'>
-          <Form.Check type='checkbox' label='Steam' />
-        </Form.Group>
-        <Form.Group className='mb-3' controlId='formBasicCheckbox'>
-          <Form.Check type='checkbox' label='Xbox' />
-        </Form.Group>
-        <Form.Group className='mb-3' controlId='formBasicCheckbox'>
-          <Form.Check type='checkbox' label='Playstation' />
-        </Form.Group>
-        <Form.Group className='mb-3' controlId='formBasicCheckbox'>
-          <Form.Check type='checkbox' label='Atari' />
-        </Form.Group>
+              <Form.Group className='mb-3' controlId='formBasicCheckbox'>
+             <Form.Check type='checkbox' label='Xbox' name='profilePlatform'
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value='Xbox'/>
+                </Form.Group>
+
+
         <Button variant='primary' type='submit'>
           Submit
         </Button>
+
       </Form>
+      {status && (<div className={status.type}>{status.message}</div>)}
       <FormDebugger {...props} />
     </>
   )

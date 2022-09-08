@@ -4,21 +4,23 @@ import { Home } from './Home'
 import { FourOhFour } from './FourOhFour'
 import React from 'react'
 import { SignUp } from './Sign-Up'
-
 import { Profile } from './Profile'
 import { Squads } from './Squads'
 import { SquadLead } from './SquadLead'
 import { Navigation } from './Navigation'
+import { SignIn } from './Sign-In'
+import { Provider } from 'react-redux'
 
-export const App = () => (
+export const App = ({store}) => (
   <>
+    <Provider store={store}>
     <BrowserRouter>
       <Navigation />
       <Routes>
 
         <Route path='/' element={<Home />} />
         <Route path='*' element={<FourOhFour />} />
-
+        <Route path='/sign-in' element={<SignIn />} />
         <Route path='/sign-up' element={<SignUp />} />
 
         <Route path='/profile' element={<Profile />} />
@@ -27,5 +29,6 @@ export const App = () => (
 
       </Routes>
     </BrowserRouter>
+    </Provider>
   </>
 )
