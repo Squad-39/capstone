@@ -15,7 +15,7 @@ export default squadsSlice.reducer
 
 export function fetchAllSquads() {
   return async function (dispatch){
-    const {data} = await httpConfig('/apis/squads')
+    const {data} = await httpConfig('/apis/squad')
     dispatch(setAllSquads(data))
   }
 }

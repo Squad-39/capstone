@@ -73,3 +73,14 @@ export async function selectPartialSquadBySquadId (squadId: string): Promise<Par
     WHERE "squadId" = ${squadId}`
   return result?.length === 1 ? result[0] : null
 }
+
+/**
+ * Helper function that interacts with postgres to select all squad objects.
+ * @return A promise containing a status object with the primary key provided or null if no id was found
+ **/
+// Export async function for selecting Squad by SquadId.
+export async function selectAllSquads (): Promise<Squad[]> {
+   return sql <Squad[]>
+    `SELECT "squadId", "squadProfileId", "squadAchievements", "squadEmblem", "squadMaxSize", "squadName" from squad`
+}
+
