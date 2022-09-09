@@ -3,6 +3,7 @@ import {
   selectPartialSquadBySquadId,
   selectSquadBySquadId,
   Squad,
+  selectAllSquads,
   updateSquad
 } from '../../utils/models/Squad'
 import {Request, Response} from "express";
@@ -80,6 +81,17 @@ export async function getSquadBySquadId(request: Request, response: Response): P
     const {squadId} = request.params;
     const mySqlResult = await selectSquadBySquadId(squadId);
     const data = mySqlResult ?? null
+    const status: Status = {status: 200, data, message: null}
+    return response.json(status)
+  } catch (error: any) {
+    return (response.json({status: 400, data: null, message: error.message}))
+  }
+}
+export async function getAllSquads(request: Request, response: Response): Promise<Response> {
+  try {
+
+    const mySqlResult = await selectAllSquads();
+    const data = mySqlResult
     const status: Status = {status: 200, data, message: null}
     return response.json(status)
   } catch (error: any) {
