@@ -24,7 +24,7 @@ console.log(squads)
     <>
     {/* This is the dropdown for searching for Squads */}
       <Dropdown>
-        <Dropdown.Toggle variant='primary mt-3' id='dropdown-basic'>
+        <Dropdown.Toggle variant='dark mt-3' className="button" id='dropdown-basic'>
           Search
         </Dropdown.Toggle>
         <Dropdown.Menu>

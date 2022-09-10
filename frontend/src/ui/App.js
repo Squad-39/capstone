@@ -10,12 +10,14 @@ import { SquadLead } from './SquadLead'
 import { Navigation } from './Navigation'
 import { SignIn } from './Sign-In'
 import { Provider } from 'react-redux'
+import './styles/style.css'
 
 export const App = ({store}) => (
   <>
     <Provider store={store}>
     <BrowserRouter>
       <Navigation />
+      <section className="background">
       <Routes>
 
         <Route path='/' element={<Home />} />
@@ -28,6 +30,7 @@ export const App = ({store}) => (
         <Route path='/squadlead' element={<SquadLead />} />
 
       </Routes>
+      </section>
     </BrowserRouter>
     </Provider>
   </>

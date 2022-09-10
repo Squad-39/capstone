@@ -9,6 +9,7 @@ import { httpConfig } from '../utils/http-config'
 import { setAuth } from '../store/auth'
 import jwtDecode from 'jwt-decode'
 import { useDispatch } from 'react-redux'
+import './styles/style.css'
 
 export const SignIn = () => {
     const signIn = {
@@ -103,7 +104,7 @@ const SignInFormContent = (props) => {
         </Form.Group>
         <DisplayError field='profilePassword' errors={errors}touched={touched} />
 
-        <Button variant='primary' type='submit'>
+        <Button variant='dark' className="button" type='submit'>
           Submit
         </Button>
 
