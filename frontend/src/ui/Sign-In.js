@@ -74,7 +74,7 @@ const SignInFormContent = (props) => {
   } = props
   return (
     <>
-      <h1>Create Your Account</h1>
+      <h1 className="text1">Create Your Account</h1>
       <Form onSubmit={handleSubmit}>
 
         <Form.Group className='mb-3' controlId='profileEmail'>

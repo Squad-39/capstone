@@ -12,3 +12,10 @@
     border-color: #14FFEC;
     color: white
 }
+
+.homeImage {
+    text-align: center;
+    margin: auto;
+    display: block;
+    width: 100%
+}
