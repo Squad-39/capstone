@@ -15,7 +15,9 @@
 
 .homeImage {
     text-align: center;
-    margin: auto;
     display: block;
-    width: 100%
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 50%;
 }
