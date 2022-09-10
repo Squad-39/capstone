@@ -28,6 +28,7 @@ export const App = ({store}) => (
         <Route path='/profile' element={<Profile />} />
         <Route path='/squads' element={<Squads />} />
         <Route path='/squadlead' element={<SquadLead />} />
+        <Route path='/aboutus' element={<AboutUs />} />
 
       </Routes>
       </section>
