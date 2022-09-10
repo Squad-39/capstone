@@ -13,19 +13,17 @@ import { Navigation } from './Navigation'
 import { SignIn } from './Sign-In'
 import { Provider } from 'react-redux'
 
-<<<<<<< HEAD
 
-export const App = () => (
-=======
+
+
 export const App = ({store}) => (
->>>>>>> 5831dd3d358771b3f20751ebcaa5e45c517dc07b
+
   <>
     <Provider store={store}>
     <BrowserRouter>
       <Navigation />
       <Routes>
 
-<<<<<<< HEAD
         <Route path='/login' element={<Login />} />
         <Route path='/squadProfile' element={<SquadProfile />} />
         <Route path="/sign-up" element={<SignUp />} />
@@ -43,7 +41,6 @@ export const App = ({store}) => (
         <Route path='/squads' element={<Squads />} />
         <Route path='/squadlead' element={<SquadLead />} />
 
->>>>>>> 5831dd3d358771b3f20751ebcaa5e45c517dc07b
       </Routes>
     </BrowserRouter>
     </Provider>
