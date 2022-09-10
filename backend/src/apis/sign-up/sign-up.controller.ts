@@ -40,7 +40,7 @@ export async function signUpController (request: Request, response: Response): P
     }
     await insertProfile(profile)
 
-    // await mailgunClient.messages.create(process.env.MAILGUN_DOMAIN as string, mailgunMessage)
+    await mailgunClient.messages.create(process.env.MAILGUN_DOMAIN as string, mailgunMessage)
 
     const status: Status = {
       status: 200,

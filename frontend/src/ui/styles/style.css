@@ -1,0 +1,14 @@
+.background {
+    background-color: #212121
+}
+
+/*Text Color*/
+.text {
+    color: #14FFEC
+}
+
+.button {
+    background: #0D7377;
+    border-color: #14FFEC;
+    color: white
+}

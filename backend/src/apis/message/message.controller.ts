@@ -13,14 +13,6 @@ import { Profile } from '../../utils/models/Profile'
 export async function postMessage (request: Request, response: Response): Promise<Response<Status>> {
   try {
     const { messageContent, messageDateTime, messageSenderId, messageRecipientId, messageSentBy } = request.body
-<<<<<<< HEAD
-    console.log("This is the message I see", messageContent)
-    console.log("This is the DateTime I see", messageDateTime)
-    // @ts-ignore
-=======
-    // console.log("This is the message I see", messageContent)
-    // console.log("This is the DateTime I see", messageDateTime)
->>>>>>> 81d5eb6eee73b01e1a6d0167c17a3c651e3b7175
     const profile: Profile = request.session.profile as Profile
     const messageId: string = <string>profile.profileId
     // console.log("This is the messageId I'm seeing", messageId)
