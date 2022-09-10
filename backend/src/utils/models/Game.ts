@@ -16,7 +16,7 @@ export async function selectGameByGameId(gameId: string): Promise<Game | null> {
 
 //todo: write a selectAllGames function
 /**
- * Helper function that interacts with postgres to select all game objects in the database
+ * Helper function that interacts with postgres to select all games objects in the database
  * @return {Promise<Game[]>} A promise containing an of all status objects in the database
  **/
 
@@ -53,10 +53,10 @@ export async function insertGame (game: Game): Promise<string> {
 
 
 /*
-export async function updateGame (game: Game): Promise<string> {
-  const {gameId, gameGenre, gameImageUrl, gameName} = game
+export async function updateGame (games: Game): Promise<string> {
+  const {gameId, gameGenre, gameImageUrl, gameName} = games
   await sql`
-UPDATE "game" 
+UPDATE "games"
 SET "gameId" = ${gameId},  "gameGenre" = ${gameGenre}, "gameImageUrl" = ${gameImageUrl}, "gameName" = ${gameName}
 WHERE "gameId" = ${gameId}`
   return 'Profile updated successfully'
