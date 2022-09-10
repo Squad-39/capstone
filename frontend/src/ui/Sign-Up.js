@@ -174,8 +174,9 @@ export const SignUpFormContent = (props) => {
                 </Form.Group>
 
 
+
         <Button variant='dark' className="button" type='submit'>
-          Submit
+
         </Button>
 
       </Form>

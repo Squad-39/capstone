@@ -25,8 +25,8 @@ console.log(squads)
     {/* This is the dropdown for searching for Squads */}
       <Dropdown>
         <Dropdown.Toggle variant='dark mt-3' className="button" id='dropdown-basic'>
-          Search
         </Dropdown.Toggle>
+
         <Dropdown.Menu>
           <Dropdown.Item href='#/action-1'>Action</Dropdown.Item>
           <Dropdown.Item href='#/action-2'>Adventure</Dropdown.Item>
@@ -47,10 +47,8 @@ console.log(squads)
       {squads.map(squad => <SquadsCard squad = {squad} />)}
 
       <h2>Featured Games</h2>
-
       <h2>Recently Played</h2>
       <h2>Tournament & Events</h2>
-
     </>
   )
 }

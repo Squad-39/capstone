@@ -1,10 +1,11 @@
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import './styles/style.css'
 
+import './styles/style.css'
 export function Navigation () {
   return (
     <>
+
       <Navbar className='background' variant='dark'>
         <Navbar.Brand href='/' className="text">Squad</Navbar.Brand>
         <Nav className='me-auto'>
@@ -14,9 +15,10 @@ export function Navigation () {
           <Nav.Link href='/profile' className="text">Profile</Nav.Link>
           <Nav.Link href='#aboutus' className="text">About Us</Nav.Link>
           <Nav.Link href='#contactus' className="text">Contact Us</Nav.Link>
+          <Navbar bg='dark' variant='dark'></Navbar>
         </Nav>
       </Navbar>
-      <br />
     </>
-  )
-}
+    )
+    }
+

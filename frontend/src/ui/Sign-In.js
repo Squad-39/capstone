@@ -11,6 +11,7 @@ import jwtDecode from 'jwt-decode'
 import { useDispatch } from 'react-redux'
 import './styles/style.css'
 
+
 export const SignIn = () => {
     const signIn = {
       profileEmail: '',
@@ -104,7 +105,9 @@ const SignInFormContent = (props) => {
         </Form.Group>
         <DisplayError field='profilePassword' errors={errors}touched={touched} />
 
-        <Button variant='dark' className="button" type='submit'>
+
+        <Button variant='primary' type='submit'>
+
           Submit
         </Button>
 

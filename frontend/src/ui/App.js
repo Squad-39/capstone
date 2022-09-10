@@ -13,19 +13,23 @@ import { Provider } from 'react-redux'
 import './styles/style.css'
 
 
+
 export const App = ({store}) => (
 
   <>
     <Provider store={store}>
     <BrowserRouter>
       <Navigation />
+
       <section className="background">
+
       <Routes>
 
 
         <Route path="/profile" element={<Profile />} />
         <Route path="/squads" element={< Squads />} />
         <Route path="/squadlead" element={< SquadLead />} />
+
         <Route path='/' element={<Home />} />
         <Route path='*' element={<FourOhFour />} />
         <Route path='/sign-in' element={<SignIn />} />
