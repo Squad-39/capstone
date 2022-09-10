@@ -6,7 +6,6 @@ export const Home = () => {
   return (
     <>
       <container className={""}>
-              <h1 className={"text text-center"}>Welcome to Squad Finder</h1>
               <img src={Logo} className={"homeImage"} alt='squadLogo' />
         </container>
     </>
