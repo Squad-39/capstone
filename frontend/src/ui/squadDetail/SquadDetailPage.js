@@ -3,7 +3,12 @@ import React, { useEffect } from 'react';
 import {useParams} from 'react-router-dom'
 import { Col, Container, ListGroup, Row } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
+<<<<<<< HEAD:frontend/src/ui/squadDetail/SquadDetailPage.js
 import Images from '../images/blackSquad.jpg'
+=======
+import SquadLogo from '../images/blackSquad.jpg'
+import {fetchAllSquads, fetchSquadBySquadId} from "../../store/squads";
+>>>>>>> e1a239bcae050b79a4fa58074b79898c1c86610a:frontend/src/ui/squadDetails/SquadDetailPage.js
 export const SquadDetailPage = () => {
 
   // Returns the userPosts store from redux and assigns it to the userPosts variable.
@@ -14,6 +19,7 @@ export const SquadDetailPage = () => {
 console.log(squadId)
   const sideEffects = () => {
     // The dispatch function takes actions as arguments to make changes to the store/redux.
+    dispatch(fetchSquadBySquadId(squadId))
 
 
   };
@@ -25,12 +31,12 @@ console.log(squadId)
    **/
   useEffect(sideEffects,  [squadId, dispatch]);
 
-  const posts = useSelector(state => (
-    state.posts
-      ? state.posts.filter(post => post.postSquadId === squadId)
-      : []
+  const squad = useSelector(state => (
+    state.squads.length === 1
+      ? state.squads[0]
+      : null
   ));
-
+console.log(squad)
 
   return (
     <>
@@ -46,10 +52,10 @@ console.log(squadId)
 
         <div className={"container"}>
           <ListGroup>
-            <ListGroup.Item>Squad Name</ListGroup.Item>
-            <ListGroup.Item>Emblem</ListGroup.Item>
-            <ListGroup.Item>Achievements</ListGroup.Item>
-            <ListGroup.Item>Squad Size</ListGroup.Item>
+            <ListGroup.Item>{squad.squadName}</ListGroup.Item>
+            <ListGroup.Item>{squad.squadEmblem}</ListGroup.Item>
+            <ListGroup.Item>{squad.squadAchievements}</ListGroup.Item>
+            <ListGroup.Item>{squad.squadMaxSize}</ListGroup.Item>
           </ListGroup>
           <Button variant="dark w-100 text-center">Join Squad</Button>
         </div>
