@@ -3,12 +3,9 @@ import React, { useEffect } from 'react';
 import {useParams} from 'react-router-dom'
 import { Col, Container, ListGroup, Row } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
-<<<<<<< HEAD:frontend/src/ui/squadDetail/SquadDetailPage.js
+
 import Images from '../images/blackSquad.jpg'
-=======
-import SquadLogo from '../images/blackSquad.jpg'
 import {fetchAllSquads, fetchSquadBySquadId} from "../../store/squads";
->>>>>>> e1a239bcae050b79a4fa58074b79898c1c86610a:frontend/src/ui/squadDetails/SquadDetailPage.js
 export const SquadDetailPage = () => {
 
   // Returns the userPosts store from redux and assigns it to the userPosts variable.
