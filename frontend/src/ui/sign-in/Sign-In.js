@@ -2,14 +2,14 @@ import React from 'react'
 import * as Yup from 'yup'
 import { Formik } from 'formik'
 import Form from 'react-bootstrap/Form'
-import { DisplayError } from './shared/components/display-error/DisplayError'
+import { DisplayError } from '../shared/components/display-error/DisplayError'
 import Button from 'react-bootstrap/Button'
-import { FormDebugger } from './shared/components/FormDebugger'
-import { httpConfig } from '../utils/http-config'
-import { setAuth } from '../store/auth'
+import { FormDebugger } from '../shared/components/FormDebugger'
+import { httpConfig } from '../../utils/http-config'
+import { setAuth } from '../../store/auth'
 import jwtDecode from 'jwt-decode'
 import { useDispatch } from 'react-redux'
-import './styles/style.css'
+import '../styles/style.css'
 
 export const SignIn = () => {
     const signIn = {
@@ -65,19 +65,15 @@ const SignInFormContent = (props) => {
     values,
     errors,
     touched,
-    dirty,
-    isSubmitting,
     handleChange,
     handleBlur,
     handleSubmit,
-    handleReset
   } = props
   return (
     <>
-      <h1>Create Your Account</h1>
-      <Form onSubmit={handleSubmit}>
-
-        <Form.Group className='mb-3' controlId='profileEmail'>
+      <Form className="p-5" onSubmit={handleSubmit}>
+        <h2 className="text">Create Your Account</h2>
+        <Form.Group className='mb-3 text' controlId='profileEmail'>
           <Form.Label>Email address</Form.Label>
           <Form.Control
             onChange={handleChange}
@@ -86,13 +82,10 @@ const SignInFormContent = (props) => {
             value={values.profileEmail}
             type='email'
             placeholder='Enter email' />
-          <Form.Text className='text-muted'>
-            We'll never share your email with anyone else.
-          </Form.Text>
         </Form.Group>
-        <DisplayError field='profileEmail' errors={errors}touched={touched} />
+        <DisplayError field='profileEmail' errors={errors} touched={touched} />
 
-        <Form.Group className='mb-3' controlId='profilePassword'>
+        <Form.Group className='mb-3 text' controlId='profilePassword'>
           <Form.Label>Password</Form.Label>
           <Form.Control
             onChange={handleChange}
@@ -102,7 +95,7 @@ const SignInFormContent = (props) => {
             type='password'
             placeholder='Password' />
         </Form.Group>
-        <DisplayError field='profilePassword' errors={errors}touched={touched} />
+        <DisplayError field='profilePassword' errors={errors} touched={touched} />
 
         <Button variant='dark' className="button" type='submit'>
           Submit

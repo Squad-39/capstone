@@ -1,15 +1,13 @@
 import React from 'react'
+import Logo from '../ui/images/squadfinderlogo.png'
 import './styles/style.css'
 
 export const Home = () => {
   return (
     <>
-      <section className="background">
-
-      <h1 className="text p-5">Welcome to Squad Finder</h1>
-
-      </section>
-
+      <container className={""}>
+              <img src={Logo} className={"homeImage"} alt='squadLogo' />
+        </container>
     </>
   )
 }
