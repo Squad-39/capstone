@@ -11,7 +11,7 @@ export const signUpValidator: Schema = {
     escape: true,
     trim: true,
     isLength: {
-      errorMessage: 'models name must be between 1 and 32 characters',
+      errorMessage: 'Gamertag name must be between 1 and 32 characters',
       options: { min: 1, max: 32 }
     }
   },
@@ -45,7 +45,7 @@ export const signUpValidator: Schema = {
     escape: true,
     trim: true,
     isLength: {
-      errorMessage: 'models name must be between 1 and 32 characters',
+      errorMessage: 'Profile name must be between 1 and 32 characters',
       options: { min: 1, max: 32 }
     }
   },
@@ -54,7 +54,7 @@ export const signUpValidator: Schema = {
     escape: true,
     trim: true,
     isLength: {
-      errorMessage: 'models name must be between 1 and 32 characters',
+      errorMessage: 'Please select Platform',
       options: { min: 1, max: 32 }
     }
   }
