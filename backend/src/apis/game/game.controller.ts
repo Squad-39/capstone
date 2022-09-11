@@ -27,7 +27,7 @@ export async function postGameController(request: Request, response: Response) :
   } catch(error) {
     return  response.json({
       status: 500,
-      message: "Error Creating game try again later.",
+      message: "Error Creating games try again later.",
       data: null
     });
   }

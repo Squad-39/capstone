@@ -66,7 +66,7 @@ export class App {
     this.app.use("/apis/gameSquad", gameSquadRoute)
     this.app.use("/apis/message", messageRoute)
     this.app.use("/apis/request", requestRoute)
-    this.app.use("/apis/game", gameRoute)
+    this.app.use("/apis/games", gameRoute)
   }
 
   // starts the server and tells the terminal to post a Message.ts that the server is running and on what port

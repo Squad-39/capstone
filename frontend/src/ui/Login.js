@@ -1,7 +1,7 @@
 import React from "react"
 import Form from 'react-bootstrap/Form';
 import  Button from 'react-bootstrap/Button';
-import Controller from '../ui/Images/controllericon.png';
+import Controller from '../ui/images/controllericon.png';
 export const Login = () => {
   return (
     <>
@@ -13,10 +13,6 @@ export const Login = () => {
           </div>
         </div>
       </div>
-
-
-
-
 
       <Form>
         <h1>Login</h1>

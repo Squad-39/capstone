@@ -27,6 +27,8 @@ console.log(squads)
         <Dropdown.Toggle variant='dark mt-3' className="button" id='dropdown-basic'>
           Search
         </Dropdown.Toggle>
+
+
         <Dropdown.Menu>
           <Dropdown.Item href='#/action-1'>Action</Dropdown.Item>
           <Dropdown.Item href='#/action-2'>Adventure</Dropdown.Item>
@@ -46,6 +48,10 @@ console.log(squads)
       <h1>Squads</h1>
       {squads.map(squad => <SquadsCard squad = {squad} />)}
 
+
     </>
   )
 }
+
+
+
