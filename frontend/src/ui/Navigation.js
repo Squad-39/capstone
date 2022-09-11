@@ -2,23 +2,25 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import './styles/style.css'
 import { Container } from 'react-bootstrap'
+import { SignInModal } from './sign-in/SignInModal'
+import { SignUpModal } from './sign-up/SignUpModal'
 
 export function Navigation () {
   return (
     <>
-      <Navbar className="background" expand="md">
-        <Container>
+      <Navbar expand="md">
+        <Container className="w-75 p-1">
           <Navbar.Brand href="/" className="text">Squad</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/sign-in" className="text">Sign In</Nav.Link>
-              <Nav.Link href="/sign-up" className="text">Sign Up</Nav.Link>
               <Nav.Link href="/squads" className="text">Squads</Nav.Link>
               <Nav.Link href="/profile" className="text">Profile</Nav.Link>
               <Nav.Link href="/aboutus" className="text">About Us</Nav.Link>
               <Nav.Link href="/contactus" className="text">Contact Us</Nav.Link>
             </Nav>
+            <SignInModal/>
+            <SignUpModal/>
           </Navbar.Collapse>
         </Container>
       </Navbar>

@@ -3,9 +3,9 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import * as Yup from 'yup'
 import { Formik } from 'formik'
-import { DisplayError } from './shared/components/display-error/DisplayError'
-import { httpConfig } from '../utils/http-config'
-import { FormDebugger } from './shared/components/FormDebugger'
+import { DisplayError } from '../shared/components/display-error/DisplayError'
+import { httpConfig } from '../../utils/http-config'
+import { FormDebugger } from '../shared/components/FormDebugger'
 
 export function SignUp () {
   const signUp = {
@@ -66,18 +66,15 @@ export const SignUpFormContent = (props) => {
     values,
     errors,
     touched,
-    dirty,
-    isSubmitting,
     handleChange,
     handleBlur,
     handleSubmit,
-    handleReset
   } = props
   return (
     <>
-      <h1>Create Your Account</h1>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className='mb-3' controlId='profileName'>
+      <Form className="p-5" onSubmit={handleSubmit}>
+        <h2 className="text">Create Your Account</h2>
+        <Form.Group className='mb-3 text' controlId='profileName'>
           <Form.Label>Name</Form.Label>
           <Form.Control
             onChange={handleChange}
@@ -87,8 +84,8 @@ export const SignUpFormContent = (props) => {
             type='text'
             placeholder='Enter name' />
         </Form.Group>
-        <DisplayError field='profileName' errors={errors}touched={touched} />
-        <Form.Group className='mb-3' controlId='profileEmail'>
+        <DisplayError field='profileName' errors={errors} touched={touched} />
+        <Form.Group className='mb-3 text' controlId='profileEmail'>
           <Form.Label>Email address</Form.Label>
           <Form.Control
             onChange={handleChange}
@@ -97,12 +94,9 @@ export const SignUpFormContent = (props) => {
             value={values.profileEmail}
             type='email'
             placeholder='Enter email' />
-          <Form.Text className='text-muted'>
-            We'll never share your email with anyone else.
-          </Form.Text>
         </Form.Group>
-        <DisplayError field='profileEmail' errors={errors}touched={touched} />
-        <Form.Group className='mb-3' controlId='profileGamertag'>
+        <DisplayError field='profileEmail' errors={errors} touched={touched} />
+        <Form.Group className='mb-3 text' controlId='profileGamertag'>
           <Form.Label>Gamertag</Form.Label>
           <Form.Control
             onChange={handleChange}
@@ -111,12 +105,9 @@ export const SignUpFormContent = (props) => {
             value={values.profileGamertag}
             type='GamerTag'
             placeholder='Enter gamertag' />
-          <Form.Text className='text-muted'>
-            share at your own risk
-          </Form.Text>
         </Form.Group>
-        <DisplayError field='profileGamertag' errors={errors}touched={touched} />
-        <Form.Group className='mb-3' controlId='profilePassword'>
+        <DisplayError field='profileGamertag' errors={errors} touched={touched} />
+        <Form.Group className='mb-3 text' controlId='profilePassword'>
           <Form.Label>Password</Form.Label>
           <Form.Control
             onChange={handleChange}
@@ -126,9 +117,9 @@ export const SignUpFormContent = (props) => {
             type='password'
             placeholder='Password' />
         </Form.Group>
-        <DisplayError field='profilePassword' errors={errors}touched={touched} />
+        <DisplayError field='profilePassword' errors={errors} touched={touched} />
 
-        <Form.Group className='mb-3' controlId='profilePasswordConfirm'>
+        <Form.Group className='mb-3 text' controlId='profilePasswordConfirm'>
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
             onChange={handleChange}
@@ -136,37 +127,37 @@ export const SignUpFormContent = (props) => {
             name='profilePasswordConfirm'
             value={values.profilePasswordConfirm}
             type='password'
-            placeholder='Confirm Profile Password' />
+            placeholder='Confirm Your Password' />
         </Form.Group>
-        <DisplayError field='profilePassword' errors={errors}touched={touched} />
+        <DisplayError field='profilePassword' errors={errors} touched={touched} />
 
-        <h1>Choose your Poison</h1>
-        <Form.Group className='mb-3' controlId='formBasicCheckbox'>
+        <h2 className="text">Choose Your Platform(s)</h2>
+        <Form.Group className='mb-3 text' controlId='formBasicCheckbox'>
           <Form.Check type='checkbox' label='Epic' name='profilePlatform'
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value='Epic'/>
         </Form.Group>
-          <Form.Group className='mb-3' controlId='formBasicCheckbox'>
+          <Form.Group className='mb-3 text' controlId='formBasicCheckbox'>
             <Form.Check type='checkbox' label='Steam' name='profilePlatform'
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value='Steam'/>
           </Form.Group>
-            <Form.Group className='mb-3' controlId='formBasicCheckbox'>
+            <Form.Group className='mb-3 text' controlId='formBasicCheckbox'>
               <Form.Check type='checkbox' label='Playstation' name='profilePlatform'
                           onChange={handleChange}
                           onBlur={handleBlur}
                           value='Playstation'/>
             </Form.Group>
-              <Form.Group className='mb-3' controlId='formBasicCheckbox'>
+              <Form.Group className='mb-3 text' controlId='formBasicCheckbox'>
                 <Form.Check type='checkbox' label='Nintendo' name='profilePlatform'
                             onChange={handleChange}
                             onBlur={handleBlur}
                             value='Nintendo'/>
               </Form.Group>
 
-              <Form.Group className='mb-3' controlId='formBasicCheckbox'>
+              <Form.Group className='mb-3 text' controlId='formBasicCheckbox'>
              <Form.Check type='checkbox' label='Xbox' name='profilePlatform'
                     onChange={handleChange}
                     onBlur={handleBlur}
