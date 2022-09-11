@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import {useParams} from 'react-router-dom'
 import { Col, Container, ListGroup, Row } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
-import SquadLogo from '../ui/Images/blackSquad.jpg';
+import Images from '../images/blackSquad.jpg'
 export const SquadDetailPage = () => {
 
   // Returns the userPosts store from redux and assigns it to the userPosts variable.
@@ -39,7 +39,7 @@ console.log(squadId)
         <div className={"container text-center"}>
           <div className={"row"}>
             <div className={"col"} >
-              <img src={SquadLogo} alt="black-squad" />
+              <img src={Images} alt="black-squad" />
             </div>
           </div>
         </div>
