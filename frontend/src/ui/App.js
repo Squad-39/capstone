@@ -19,7 +19,7 @@ export const App = ({store}) => (
       <Navigation />
       <section className="background">
       <Routes>
-
+        <Route exact path="/squad/:squadId" element={<SquadPosts />} squadId=":squadId"/>
         <Route path='/' element={<Home />} />
         <Route path='*' element={<FourOhFour />} />
         <Route path='/sign-in' element={<SignIn />} />
