@@ -11,6 +11,7 @@ import { Navigation } from './Navigation'
 import { SignIn } from './Sign-In'
 import { Provider } from 'react-redux'
 import './styles/style.css'
+import { AboutUs } from './About-us'
 
 export const App = ({store}) => (
   <>
