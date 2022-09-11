@@ -11,6 +11,7 @@ import { Navigation } from './Navigation'
 import { SignIn } from './Sign-In'
 import { Provider } from 'react-redux'
 import './styles/style.css'
+import { SquadDetailPage } from './squadDetails/SquadDetailPage'
 
 export const App = ({store}) => (
   <>
@@ -19,7 +20,7 @@ export const App = ({store}) => (
       <Navigation />
       <section className="background">
       <Routes>
-        <Route exact path="/squad/:squadId" element={<SquadPosts />} squadId=":squadId"/>
+        <Route exact path="/squad/:squadId" element={<SquadDetailPage />} squadId=":squadId"/>
         <Route path='/' element={<Home />} />
         <Route path='*' element={<FourOhFour />} />
         <Route path='/sign-in' element={<SignIn />} />
