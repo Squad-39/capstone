@@ -21,3 +21,11 @@
     margin: auto;
     width: 47%;
 }
+
+.auBox {
+    text-align: center;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}

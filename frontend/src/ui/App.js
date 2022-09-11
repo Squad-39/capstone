@@ -10,6 +10,7 @@ import { Navigation } from './Navigation'
 import { SignIn } from './sign-in/Sign-In'
 import { Provider } from 'react-redux'
 import './styles/style.css'
+import { AboutUs } from './AboutUs'
 
 
 
@@ -28,7 +29,7 @@ export const App = ({store}) => (
         <Route path='/profile' element={<Profile />} />
         <Route path='/squads' element={<Squads />} />
         <Route path='/squadlead' element={<SquadLead />} />
-
+        <Route path='/aboutus' element={<AboutUs />} />
       </Routes>
       </section>
     </BrowserRouter>
