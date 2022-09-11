@@ -18,7 +18,7 @@ export const gameValidator: Schema = {
     }
   },
   gameImageUrl: {
-    isURL: {errorMessage: 'game image is not supported'}
+    isURL: {errorMessage: 'games image is not supported'}
   }
 
 }

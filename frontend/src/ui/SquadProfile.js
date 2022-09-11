@@ -1,7 +1,7 @@
 import React from "react"
 import  Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
-import SquadLogo from '../ui/Images/blackSquad.jpg';
+import SquadLogo from '../ui/images/blackSquad.jpg';
 export const SquadProfile = () => {
   return (
     <>

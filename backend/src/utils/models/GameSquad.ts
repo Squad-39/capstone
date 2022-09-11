@@ -11,14 +11,14 @@ export async function selectGameSquadsByGameSquadGameId (gameSquad: GameSquad): 
 
   await sql`<SELECT gameSquad( "gameSquadGameId", "gameSquadSquadId") 
    VALUES(${gameSquadGameId}, ${gameSquadSquadId})`
-  return 'Squad game selected successfully'
+  return 'Squad games selected successfully'
 }
 export async function selectGameSquadsByGameSquadSquadId (gameSquad: GameSquad): Promise<string> {
   const {gameSquadGameId, gameSquadSquadId} = gameSquad
 
   await sql`<SELECT gameSquad( "gameSquadGameId", "gameSquadSquadId") 
   VALUES( ${gameSquadGameId}, ${gameSquadSquadId})`
-  return 'Squad game selected successfully'
+  return 'Squad games selected successfully'
 }
 
 export async function selectGameSquadById (gameSquad: GameSquad):
