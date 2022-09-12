@@ -1,7 +1,7 @@
 import React from "react"
 import Form from 'react-bootstrap/Form';
 import  Button from 'react-bootstrap/Button';
-import Controller from '../ui/images/controllericon.png';
+import Controller from './images/controllericon.png';
 export const Login = () => {
   return (
     <>
