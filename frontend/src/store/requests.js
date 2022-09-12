@@ -1,7 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
 import { httpConfig } from '../utils/http-config'
-import jwtDecode from 'jwt-decode'
-import { setAuth } from './auth'
+
 
 const squadsSlice = createSlice({
   name: "requestDetails",

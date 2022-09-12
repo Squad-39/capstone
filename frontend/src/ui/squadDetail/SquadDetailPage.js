@@ -41,7 +41,7 @@ console.log(squadId)
   //todo call clickRequest in onclick handler on the join squad button
   const clickRequest = () => {
     //todo build request object to send to database
-    httpConfig.post('/apis/requests/', { likeAuthId: auth.authId })
+    httpConfig.post('/apis/request/', {  requestSquadId: squadId })
       .then(reply => {
           if (reply.status === 200) {
             console.log("I worked")
@@ -72,10 +72,8 @@ if (squad === null) {
             <ListGroup.Item>{squad.squadAchievements}</ListGroup.Item>
             <ListGroup.Item>{squad.squadMaxSize}</ListGroup.Item>
           </ListGroup>
-          <Button variant="dark w-100 text-center">Join Squad</Button>
+          <Button onClick={clickRequest} variant="dark w-100 text-center">Join Squad</Button>
         </div>
-
-
       </>
     </>
   )

@@ -5,9 +5,18 @@ import { Container } from 'react-bootstrap'
 import { SignInModal } from './sign-in/SignInModal'
 import { SignUpModal } from './sign-up/SignUpModal'
 import SFLogo from './images/sflogo.png'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchAuth } from '../store/auth'
+import { useEffect } from 'react'
 
 
 export function Navigation () {
+  const auth = useSelector(state => state.auth)
+  const dispatch = useDispatch()
+  const effects = () => {
+    dispatch(fetchAuth())
+  }
+  useEffect(effects, [dispatch])
   return (
     <>
       <Navbar expand="md">
