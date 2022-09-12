@@ -6,6 +6,8 @@ import Button from 'react-bootstrap/Button'
 
 import Images from '../images/blackSquad.jpg'
 import {fetchAllSquads, fetchSquadBySquadId} from "../../store/squads";
+import auth, { fetchAuth } from '../../store/auth'
+import { httpConfig } from '../../utils/http-config'
 export const SquadDetailPage = () => {
 
   // Returns the userPosts store from redux and assigns it to the userPosts variable.
@@ -18,6 +20,7 @@ console.log(squadId)
     // The dispatch function takes actions as arguments to make changes to the store/redux.
     dispatch(fetchSquadBySquadId(squadId))
 
+    dispatch(fetchAuth())
 
   };
 
@@ -33,8 +36,23 @@ console.log(squadId)
       ? state.squads[0]
       : null
   ));
+  const auth = useSelector(state => state.auth? state.auth: state.auth)
+  console.log(auth)
+  //todo call clickRequest in onclick handler on the join squad button
+  const clickRequest = () => {
+    //todo build request object to send to database
+    httpConfig.post('/apis/requests/', { likeAuthId: auth.authId })
+      .then(reply => {
+          if (reply.status === 200) {
+            console.log("I worked")
+          }
+        }
+      )
+  }
 console.log(squad)
-
+if (squad === null) {
+  return <></>
+}
   return (
     <>
       <>
