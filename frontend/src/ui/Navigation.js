@@ -4,7 +4,7 @@ import './styles/style.css'
 import { Container } from 'react-bootstrap'
 import { SignInModal } from './sign-in/SignInModal'
 import { SignUpModal } from './sign-up/SignUpModal'
-import SFLogo from './images/sflogo.png'
+import SFLogo from './Images/sflogo.png'
 
 
 export function Navigation () {

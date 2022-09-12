@@ -1,5 +1,5 @@
 import React from 'react'
-import Controller from '../ui/images/controllericon.png'
+import Controller from '../ui/Images/controllericon.png'
 import Button from 'react-bootstrap/Button'
 
 export const SquadLead = () => {

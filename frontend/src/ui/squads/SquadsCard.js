@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card'
-import Controller from '../images/controllericon.png'
+import Controller from '../Images/controllericon.png'
 import { ListGroup } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 
