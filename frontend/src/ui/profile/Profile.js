@@ -1,20 +1,34 @@
 import React from 'react'
 import AddProfile from '../images/addprofile.jpeg'
-import Button from 'react-bootstrap/Button'
+// import Button from 'react-bootstrap/Button'
+// import { CreateSquadForm } from './CreateSquad'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchProfile } from '../../store/profile'
+import {useEffect} from 'react'
+import { CreateSquadModal } from './CreateSquadModal'
 
 export const Profile = () => {
+  const auth = useSelector(state => state.auth ?? null)
+  const dispatch = useDispatch()
+  const profile = useSelector(state => state.profile ? state.profile[0] : null)
+  const effects = () => {
+    dispatch(fetchProfile())
+  }
+  useEffect(effects, [dispatch])
+  console.log(auth)
+  console.log(profile)
   return (
     <>
-      <h1>Profile</h1>
-      <img src={AddProfile} width='100' alt='Icon' />
-      <h3>FirstName LastName</h3>
-      <p>Lorem ipsum dolor sit amet. consectetur adipisicing elit.</p>
-
-      <Button variant='dark'>Emblem</Button>
-      <Button variant='dark'>Achievements</Button>
-      <Button variant='dark'>Message</Button>
-      <Button variant='dark'>Join Squad</Button>
-
+      {profile &&
+        (
+          <>
+            <img src={AddProfile} width='100' alt='Icon' />
+            <h3 className='text'>{profile.profileName}</h3>
+            <h4 className='text'>{profile.profileGamertag}</h4>
+            <h5 className='text'>{profile.profilePlatform}</h5>
+          </>
+        )}
+      <CreateSquadModal/>
     </>
   )
 }
