@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import './styles/style.css'
@@ -7,11 +8,9 @@ import { SignUpModal } from './sign-up/SignUpModal'
 import SFLogo from './images/sflogo.png'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAuth } from '../store/auth'
-import { useEffect } from 'react'
-
 
 export function Navigation () {
-  const auth = useSelector(state => state.auth)
+  const auth = useSelector(state => state.auth ?? null)
   const dispatch = useDispatch()
   const effects = () => {
     dispatch(fetchAuth())
@@ -34,7 +33,10 @@ export function Navigation () {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="/squads" className="text">Squads</Nav.Link>
+              {auth &&
+
               <Nav.Link href="/profile" className="text">Profile</Nav.Link>
+              }
               <Nav.Link href="/aboutus" className="text">About Us</Nav.Link>
               <Nav.Link href="/contactus" className="text">Contact Us</Nav.Link>
             </Nav>
