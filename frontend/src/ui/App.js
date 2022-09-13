@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css'
 import { Home } from './Home'
 import React from 'react'
-import { SignUp } from './Sign-Up'
+import { SignUp } from './sign-up/Sign-Up'
 import { Profile } from './profile/Profile'
 import { Squads } from './squads/Squads'
 import { SquadLead } from './SquadLead'
@@ -11,6 +11,8 @@ import { SignIn } from './sign-in/Sign-In'
 import { Provider } from 'react-redux'
 import './styles/style.css'
 import { SquadDetailPage } from './squadDetail/SquadDetailPage'
+import { AboutUs } from './AboutUs'
+
 
 
 
@@ -33,7 +35,7 @@ export const App = ({store}) => (
             <Route path='/profile' element={<Profile />} />
             <Route path='/squads' element={<Squads />} />
             <Route path='/squadlead' element={<SquadLead />} />
-
+            <Route path='/aboutus' element={<AboutUs />} />
 
           </Routes>
         </section>
