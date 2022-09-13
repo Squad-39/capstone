@@ -11,25 +11,25 @@ import { httpConfig } from '../../utils/http-config'
 export const SquadDetailPage = () => {
 
   // Returns the userPosts store from redux and assigns it to the userPosts variable.
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   //grab the userId from the url
-  let { squadId } = useParams();
-console.log(squadId)
-  const sideEffects = () => {
-    // The dispatch function takes actions as arguments to make changes to the store/redux.
-    dispatch(fetchSquadBySquadId(squadId))
-
-    dispatch(fetchAuth())
-
-  };
+//   let { squadId } = useParams();
+// console.log(squadId)
+  // const sideEffects = () => {
+  //   // The dispatch function takes actions as arguments to make changes to the store/redux.
+  //   dispatch(fetchSquadBySquadId(squadId))
+  //
+  //   dispatch(fetchAuth())
+  //
+  // };
 
   /**
    * Pass both sideEffects and sideEffectInputs to useEffect.
    * useEffect is what handles rendering of components when sideEffects resolve.
    * E.g when a network request to an api has completed and there is new data to display on the dom.
    **/
-  useEffect(sideEffects,  [squadId, dispatch]);
+  // useEffect(sideEffects,  [squadId, dispatch]);
 
   const squad = useSelector(state => (
     state.squads.length === 1
@@ -41,7 +41,7 @@ console.log(squadId)
   //todo call clickRequest in onclick handler on the join squad button
   const clickRequest = () => {
     //todo build request object to send to database
-    httpConfig.post('/apis/request/', {  requestSquadId: squadId })
+    httpConfig.post('/apis/request/', {  requestSquadId: squad.squadId })
       .then(reply => {
           if (reply.status === 200) {
             console.log("I worked")

@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card'
 import Controller from '../images/controllericon.png'
 import { ListGroup } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
+import { SquadDetailModal } from '../squadDetail/SquadDetailModal'
 
 export function SquadsCard(props) {
   const {squad} = props
@@ -13,7 +14,7 @@ export function SquadsCard(props) {
         <ListGroup.Item>{squad.squadName}</ListGroup.Item>
         <ListGroup.Item>Genre</ListGroup.Item>
       </ListGroup>
-      <Button variant='primary mt-3'>Squad Up</Button>
+      <SquadDetailModal/>
     </Card.Body>
   </Card>)
 }
