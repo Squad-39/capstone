@@ -1,5 +1,6 @@
 import React from 'react'
 import './styles/style.css'
+import Logo from './Images/github-white.png'
 
 export const AboutUs = () => {
   return (
@@ -11,6 +12,9 @@ export const AboutUs = () => {
         <h4>Take a look around and GLHF!</h4>
         <br/>
         <br/>
+        <container className={""}>
+          <img src={Logo} className={"gitImage"} alt='gitLogo' />
+        </container>
         <div className="row">
           <div className="col-xs-12 col-md-3">Clyde McNeil</div>
           <div className="col-xs-12 col-md-3">Jacob Anderson</div>
