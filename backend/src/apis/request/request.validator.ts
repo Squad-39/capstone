@@ -12,11 +12,13 @@ export const requestValidator: Schema = {
     }
   },
   requestStatus: {
-    isLength: {
-      errorMessage: 'request cannot go through',
-      options: { min: 1, max: 32 }
+    optional:{
+      options:{
+        nullable:true
+      }
+
     },
-    trim: true,
-    escape: true
-  }
+    isBoolean:true
+    }
+
 }
