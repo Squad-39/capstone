@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import {
   getRequestByRequestProfileIdAndRequestSquadId,
-  getRequestsByRequestProfileId,
+  getRequestsByRequestProfileId, getRequestsByRequestSquadId,
   postRequestController, putRequestController
 } from './request.controller'
 import { isLoggedInController } from '../../utils/controllers/is-logged-in.controller'
@@ -23,7 +23,7 @@ requestRoute.route('/requestProfileId/:requestProfileId/requestSquadId/:requestS
     isLoggedInController,
     asyncValidatorController([check('requestProfileId', 'Please provide a valid UUID').isUUID(),
       check('requestSquadId', 'Please provide a valid UUID').isUUID()]),
-    getRequestByRequestProfileIdAndRequestSquadId)
+    getRequestByRequestProfileIdAndRequestSquadId).put(isLoggedInController, asyncValidatorController(checkSchema(requestValidator)),putRequestController)
 // todo routeUpdate requestHere
 
 requestRoute.route('/:profileId')
@@ -31,4 +31,11 @@ requestRoute.route('/:profileId')
     asyncValidatorController(
       [check('profileId', 'Please provide a valid uuid').isUUID()]
     ), getRequestsByRequestProfileId
+  )
+
+requestRoute.route('/requestSquadId/:squadId')
+  .get(
+    asyncValidatorController(
+      [check('squadId', 'Please provide a valid uuid').isUUID()]
+    ), getRequestsByRequestSquadId
   )

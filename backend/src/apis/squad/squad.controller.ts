@@ -4,7 +4,7 @@ import {
   selectSquadBySquadId,
   Squad,
   selectAllSquads,
-  updateSquad
+  updateSquad, selectSquadBySquadProfileId
 } from '../../utils/models/Squad'
 import {Request, Response} from "express";
 import { Status } from '../../utils/interfaces/Status'
@@ -92,6 +92,18 @@ export async function getAllSquads(request: Request, response: Response): Promis
 
     const mySqlResult = await selectAllSquads();
     const data = mySqlResult
+    const status: Status = {status: 200, data, message: null}
+    return response.json(status)
+  } catch (error: any) {
+    return (response.json({status: 400, data: null, message: error.message}))
+  }
+}
+
+export async function getSquadBySquadProfileId(request: Request, response: Response): Promise<Response> {
+  try {
+    const {squadProfileId} = request.params;
+    const mySqlResult = await selectSquadBySquadProfileId(squadProfileId);
+    const data = mySqlResult ?? null
     const status: Status = {status: 200, data, message: null}
     return response.json(status)
   } catch (error: any) {

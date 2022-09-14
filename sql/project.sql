@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS request
     "requestProfileId" UUID NOT NULL,
     "requestSquadId"   UUID NOT NULL,
     "requestStatus"    BOOLEAN ,
+    PRIMARY KEY ("requestProfileId", "requestSquadId"),
     FOREIGN KEY ("requestProfileId") REFERENCES profile ("profileId"),
     FOREIGN KEY ("requestSquadId") REFERENCES squad ("squadId")
 );

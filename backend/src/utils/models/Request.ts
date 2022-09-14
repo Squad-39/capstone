@@ -3,7 +3,7 @@ import { sql } from '../database.utils'
 export interface Request {
   requestProfileId: string
   requestSquadId: string
-  requestStatus: string|null
+  requestStatus: boolean|null
 
 }
 

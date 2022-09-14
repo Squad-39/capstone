@@ -1,11 +1,13 @@
 import React from 'react'
 import AddProfile from '../images/addprofile.jpeg'
-// import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button'
 // import { CreateSquadForm } from './CreateSquad'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchProfile } from '../../store/profile'
 import {useEffect} from 'react'
 import { CreateSquadModal } from './CreateSquadModal'
+import { Link } from 'react-router-dom'
+
 
 export const Profile = () => {
   const auth = useSelector(state => state.auth ?? null)
@@ -29,6 +31,10 @@ export const Profile = () => {
           </>
         )}
       <CreateSquadModal/>
+      <Link to={`/squad-lead/`}>
+        <Button className='text' variant="dark">Dark</Button>
+      </Link>
+
     </>
   )
 }

@@ -4,7 +4,8 @@ import squads from './squads.js'
 import games from "./games";
 import profile from "./profile"
 import squaddetails from './squaddetails'
-const reducer = combineReducers({auth, squads, squaddetails, games, profile})
+import requests from './requests'
+const reducer = combineReducers({auth, squads, squaddetails, games, profile, requests})
 
 export default configureStore({reducer});
 

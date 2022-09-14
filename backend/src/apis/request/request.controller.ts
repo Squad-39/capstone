@@ -4,11 +4,13 @@ import {
   selectRequestsByProfileId, selectRequestsBySquadId,
 
   selectRequestByIdAndSquadProfileId, updateRequest,
- Request } from '../../utils/models/Request'
+  Request, selectRequestByProfileIdAndSquadId
+} from '../../utils/models/Request'
 
 import { Status } from '../../utils/interfaces/Status'
 
 import { Profile } from '../../utils/models/Profile'
+import {selectSquadBySquadId} from "../../utils/models/Squad";
 
 /**
  * Express controller that returns all request objects in the database that matches the requestProfileId or an empty array if an error occurred, when the endpoint GET apis/request/requestProfileId/:value is called
@@ -40,8 +42,8 @@ export async function getRequestsByRequestProfileId (req: Req, res: Res): Promis
  **/
 export async function getRequestsByRequestSquadId (req: Req, res: Res): Promise<Res<Status>> {
   try {
-    const { requestSquadId } = req.params
-    const data = await selectRequestsBySquadId(requestSquadId)
+    const { squadId } = req.params
+    const data = await selectRequestsBySquadId(squadId)
     const status: Status = { status: 200, message: null, data }
     return res.json(status)
   } catch (error) {
@@ -108,9 +110,17 @@ export async function putRequestController (req: Req, res: Res): Promise<Res> {
     const { requestProfileId, requestSquadId, requestStatus } = req.body
     const profile = req.session.profile as Profile
     const profileIdFromSession = profile.profileId as string
+    const squad = await selectSquadBySquadId(requestSquadId)
+console.log(squad)
+    console.log(profileIdFromSession)
+    console.log(squad !== null && squad.squadProfileId !== profileIdFromSession)
+    if(squad !== null && squad.squadProfileId !== profileIdFromSession){
+      return res.json({status:401, message:"you are not allowed to preform this task", data:null})
+    }
 
     const preformUpdate = async (request: Request, squadProfileId: string): Promise<Res> => {
-      const previousRequest: Request | null = await selectRequestByIdAndSquadProfileId(request, squadProfileId)
+      const previousRequest: Request | null = await selectRequestByProfileIdAndSquadId(request.requestProfileId, request.requestSquadId)
+      console.log(previousRequest)
       if (previousRequest) {
       const newRequest: Request = { ...previousRequest, ...request }
       await updateRequest(newRequest)
@@ -120,13 +130,8 @@ export async function putRequestController (req: Req, res: Res): Promise<Res> {
       }
     }
 
-    const updateFailed = (message: string): Res => {
-      return res.json({ status: 400, data: null, message })
-    }
+       return preformUpdate({ requestProfileId, requestSquadId, requestStatus }, profileIdFromSession)
 
-    return profileId === profileIdFromSession
-      ? await preformUpdate({ requestProfileId, requestSquadId, requestStatus }, profileIdFromSession)
-      : updateFailed('you are not allowed to preform this action')
   } catch (error: any) {
     return res.json({ status: 400, data: null, message: error.message })
   }
