@@ -30,3 +30,10 @@ export function fetchSquadBySquadId(squadId) {
     dispatch(setIndividualSquad(data))
   }
 }
+
+export function fetchSquadsBySquadProfileId(squadProfileId) {
+  return async function (dispatch){
+    const {data} = await httpConfig(`/apis/squad/${squadProfileId}`)
+    dispatch(setAllSquads(data))
+  }
+}

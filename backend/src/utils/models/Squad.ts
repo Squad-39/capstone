@@ -84,3 +84,15 @@ export async function selectAllSquads (): Promise<Squad[]> {
     `SELECT "squadId", "squadProfileId", "squadAchievements", "squadEmblem", "squadMaxSize", "squadName" from squad`
 }
 
+/**
+ * Helper function that interacts with postgres to select a squad  object by squad profile Id.
+ * @param squadProfileId a string containing the foreign key for the target object.
+ * @return A promise that will provide an array of squads
+ **/
+// Export async function for selecting Squad by SquadProfileId.
+export async function selectSquadBySquadProfileId (squadProfileId: string): Promise<Squad []|null> {
+  const result = await sql <Squad[]>
+    `SELECT "squadId", "squadProfileId", "squadAchievements", "squadEmblem", "squadMaxSize", "squadName" from squad 
+    WHERE "squadProfileId" = ${squadProfileId}`
+  return result?.length >= 1 ? result  : null
+}

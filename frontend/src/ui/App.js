@@ -34,7 +34,7 @@ export const App = ({store}) => (
             <Route path='/sign-up' element={<SignUp />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/squads' element={<Squads />} />
-            <Route path='/squadlead' element={<SquadLead />} />
+            <Route path='/squad-lead/:squadId' squadId=":squadId" element={<SquadLead />} />
             <Route path='/aboutus' element={<AboutUs />} />
 
           </Routes>
