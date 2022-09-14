@@ -29,16 +29,14 @@ export function Navigation () {
                 alt="Squad Finder Logo"
               />
             </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Toggle className="bg-white" aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
+            <Nav className="me-auto fs-4">
               <Nav.Link href="/squads" className="text">Squads</Nav.Link>
               {auth &&
-
               <Nav.Link href="/profile" className="text">Profile</Nav.Link>
               }
-              <Nav.Link href="/aboutus" className="text">About Us</Nav.Link>
-              <Nav.Link href="/contactus" className="text">Contact Us</Nav.Link>
+              <Nav.Link href="/aboutus" className="text">About</Nav.Link>
             </Nav>
             <SignInModal/>
             <SignUpModal/>
