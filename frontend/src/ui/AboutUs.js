@@ -3,6 +3,9 @@ import './styles/style.css'
 import Gitlogo from './images/ghwhitelogo.png'
 import Tasha from './images/tashasquad.png'
 import Clyde from './images/clydesquad.png'
+import Jacob from './images/jacobsquad.png'
+import Jonathan from './images/jonathansquad.png'
+
 export const AboutUs = () => {
   return (
     <>
@@ -21,8 +24,8 @@ export const AboutUs = () => {
         <h1 className="text p-5">Our Squad</h1>
         <div className="row text-white">
           <div className="col-xs-12 col-md-3"><img src={Clyde} className={"aboutIcon"} alt='clyde'/><h3>Clyde McNeil</h3><a href="https://www.linkedin.com/in/clydemcneil/">LinkedIn</a></div>
-          <div className="col-xs-12 col-md-3"><img src={Clyde} className={"aboutIcon"} alt='clyde'/><h3>Jacob Anderson</h3><a href="https://www.linkedin.com/in/jacobanderson-abq/">LinkedIn</a></div>
-          <div className="col-xs-12 col-md-3"><img src={Clyde} className={"aboutIcon"} alt='clyde'/><h3>Jonathan Large</h3><a href="https://www.linkedin.com/in/jonathan-large-370951164/">LinkedIn</a></div>
+          <div className="col-xs-12 col-md-3"><img src={Jacob} className={"aboutIcon"} alt='jacob'/><h3>Jacob Anderson</h3><a href="https://www.linkedin.com/in/jacobanderson-abq/">LinkedIn</a></div>
+          <div className="col-xs-12 col-md-3"><img src={Jonathan} className={"aboutIcon"} alt='jonathan'/><h3>Jonathan Large</h3><a href="https://www.linkedin.com/in/jonathan-large-370951164/">LinkedIn</a></div>
           <div className="col-xs-12 col-md-3"> <img src={Tasha} className={"aboutIcon"} alt='tasha'/> <h3>Tasha Deschenie</h3><a href="https://www.linkedin.com/in/deschenie/">LinkedIn</a></div>
         </div>
         <br/>
