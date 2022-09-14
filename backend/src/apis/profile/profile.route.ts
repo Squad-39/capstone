@@ -1,4 +1,4 @@
-import { getProfileByProfileIdController, putProfileController } from './profile.controller'
+import { getProfileByProfileIdController, putProfileController, getPartialProfilesBySquadIdController } from './profile.controller'
 import { Router } from 'express'
 import { check, checkSchema } from 'express-validator'
 import { asyncValidatorController } from '../../utils/controllers/async-validator.controller'
@@ -9,14 +9,17 @@ export const profileRoute: Router = Router()
 profileRoute.route('/')
   .post(putProfileController)
 
-profileRoute.route('/:profileId')
+profileRoute.route('/squad/:squadId')
   .get(
     asyncValidatorController([
-      check('profileId', 'please provide a valid profileId').isUUID()
+      check('squadId', 'please provide a valid squadId').isUUID()
     ])
-    , getProfileByProfileIdController
+     , getPartialProfilesBySquadIdController
   )
-profileRoute.route('/:profileId')
+profileRoute.route('/:profileId') .get(asyncValidatorController([
+  check('profileId', 'please provide a valid profileId').isUUID()
+]),getProfileByProfileIdController)
+
   .put(isLoggedInController, asyncValidatorController(checkSchema(profileValidator)), putProfileController)
 
 

@@ -76,3 +76,8 @@ export async function selectProfileByProfileEmail (profileEmail: string): Promis
   const result = await sql <Profile[]>`SELECT "profileId", "profileEmail", "profileHash", "profileName" from profile WHERE "profileEmail" = ${profileEmail}`
   return result?.length === 1 ? result[0] : null
 }
+
+
+export async function selectPartialProfilesBySquadId (squadId: string): Promise<PartialProfile[]> {
+   return sql <PartialProfile[]>`SELECT "profileId", "profileEmail","profileName" FROM profile INNER JOIN request ON   profile."profileId" = request."requestProfileId"  WHERE request."requestSquadId" = ${squadId} and request."requestStatus" is true`
+}
