@@ -9,18 +9,19 @@ import {httpConfig} from "../utils/http-config";
 
 export const SquadLead = () => {
   const auth = useSelector(state => state.auth ?? null)
-  const {squadId} = useParams()
+  // const {squadId} = useParams()
   const dispatch = useDispatch()
   const squad = useSelector(state => (
-    state.squads.length === 1
+    state.squads?.length === 1
       ? state.squads[0]
       : null
   ));
 
   const requests = useSelector(state => state.requests ?? [])
   const initialEffects = () => {
-    dispatch(fetchRequestsByRequestSquadId(squadId))
-    dispatch(fetchSquadBySquadId(squadId))
+    // dispatch(fetchRequestsByRequestSquadId(squadId))
+    // dispatch(fetchSquadBySquadId(squadId))
+    dispatch (fetchSquadsBySquadProfileId(auth.profileId))
     // // const request = useSelector(state => (
     // //   state.requests.length === 1
     // //   ? state.requests [0]
@@ -28,7 +29,7 @@ export const SquadLead = () => {
     // ));
   }
 
-  React.useEffect(initialEffects, [squadId, dispatch])
+  React.useEffect(initialEffects, [auth, dispatch])
   if (squad === null) {
     return <></>
   }

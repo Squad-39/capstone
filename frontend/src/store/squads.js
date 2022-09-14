@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
 import { httpConfig } from '../utils/http-config'
+import {fetchRequestsByRequestSquadId} from "./requests";
 
 const squadsSlice = createSlice({
   name: "squads",
@@ -33,7 +34,13 @@ export function fetchSquadBySquadId(squadId) {
 
 export function fetchSquadsBySquadProfileId(squadProfileId) {
   return async function (dispatch){
-    const {data} = await httpConfig(`/apis/squad/${squadProfileId}`)
+    const {data} = await httpConfig(`/apis/squad/squadProfileId/${squadProfileId}`)
     dispatch(setAllSquads(data))
+    console.log(data)
+      if(data) {
+        for (let squad of data) {
+          dispatch(fetchRequestsByRequestSquadId(squad.squadId))
+        }
+      }
   }
 }

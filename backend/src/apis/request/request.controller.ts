@@ -4,7 +4,8 @@ import {
   selectRequestsByProfileId, selectRequestsBySquadId,
 
   selectRequestByIdAndSquadProfileId, updateRequest,
- Request } from '../../utils/models/Request'
+  Request, selectRequestByProfileIdAndSquadId
+} from '../../utils/models/Request'
 
 import { Status } from '../../utils/interfaces/Status'
 
@@ -118,7 +119,8 @@ console.log(squad)
     }
 
     const preformUpdate = async (request: Request, squadProfileId: string): Promise<Res> => {
-      const previousRequest: Request | null = await selectRequestByIdAndSquadProfileId(request, squadProfileId)
+      const previousRequest: Request | null = await selectRequestByProfileIdAndSquadId(request.requestProfileId, request.requestSquadId)
+      console.log(previousRequest)
       if (previousRequest) {
       const newRequest: Request = { ...previousRequest, ...request }
       await updateRequest(newRequest)

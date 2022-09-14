@@ -8,6 +8,7 @@ import {useEffect} from 'react'
 import { CreateSquadModal } from './CreateSquadModal'
 import { Link } from 'react-router-dom'
 
+
 export const Profile = () => {
   const auth = useSelector(state => state.auth ?? null)
   const dispatch = useDispatch()
@@ -30,8 +31,8 @@ export const Profile = () => {
           </>
         )}
       <CreateSquadModal/>
-      <Link to={'/squadLead'}>
-        <Button variant="dark">Dark</Button>
+      <Link to={`/squad-lead/`}>
+        <Button className='text' variant="dark">Dark</Button>
       </Link>
 
     </>
