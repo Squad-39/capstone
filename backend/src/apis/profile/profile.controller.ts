@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import {
   Profile,
   selectPartialProfileByProfileId,
-  updateProfile
+  updateProfile, selectPartialProfilesBySquadId
 } from '../../utils/models/Profile'
 import { Status } from '../../utils/interfaces/Status'
 export async function putProfileController (request: Request, response: Response): Promise<Response>  {
@@ -37,3 +37,14 @@ export async function putProfileController (request: Request, response: Response
         return (response.json({status: 400, data: null, message: error.Message.ts}))
       }
     }
+export async function getProfilesBySquadIdController (request: Request, response: Response): Promise<Response> {
+  try {
+    const {squadId} = request.params;
+    const mySqlResult = await selectPartialProfilesBySquadId(squadId);
+    const data = mySqlResult ?? null
+    const status: Status = {status: 200, data, message: null}
+    return response.json(status)
+  } catch (error: any) {
+    return (response.json({status: 400, data: null, message: error.Message.ts}))
+  }
+}
