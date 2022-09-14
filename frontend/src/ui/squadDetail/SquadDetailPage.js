@@ -78,6 +78,7 @@ if (squad === null) {
 
         <div className={"container"}>
           <ListGroup>
+            <ListGroup.Item>{profile.map(profile => <span>{profile.profileName} </span>)}</ListGroup.Item>
             <ListGroup.Item>{squad.squadName}</ListGroup.Item>
             <ListGroup.Item>{squad.squadEmblem}</ListGroup.Item>
             <ListGroup.Item>{squad.squadAchievements}</ListGroup.Item>
