@@ -29,6 +29,7 @@
     justify-content: center;
     align-items: center;
     margin: auto;
+    padding: 2rem;
 }
 
 .gitImage {
@@ -37,5 +38,10 @@
     justify-content: center;
     align-items: center;
     margin: auto;
-    width: 20%;
+    width: 11rem;
 }
+
+.aboutIcon {
+    width: 12rem;
+}
+
