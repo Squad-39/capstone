@@ -45,6 +45,6 @@ export async function getPartialProfilesBySquadIdController (request: Request, r
     const status: Status = {status: 200, data, message: null}
     return response.json(status)
   } catch (error: any) {
-    return (response.json({status: 400, data: null, message: error.Message.ts}))
+    return (response.json({status: 400, data: null, message: error.message}))
   }
 }
