@@ -72,7 +72,7 @@ const SignInFormContent = (props) => {
   return (
     <>
       <Form className="p-5" onSubmit={handleSubmit}>
-        <h2 className="text">Create Your Account</h2>
+        <h2 className="text">Please Sign In</h2>
         <Form.Group className='mb-3 text' controlId='profileEmail'>
           <Form.Label>Email address</Form.Label>
           <Form.Control

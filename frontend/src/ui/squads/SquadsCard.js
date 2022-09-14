@@ -8,18 +8,15 @@ import { Link } from 'react-router-dom'
 
 export function SquadsCard(props) {
   const {squad} = props
-  return ( <Card style={{ width: '18rem' }}>
+  return (
+    <Card className="text-center cardWidth m-4">
     <Card.Img variant='top' src={Controller} className='bg-black' alt='controller' />
     <Card.Body>
       <ListGroup className='text-center'>
-        <ListGroup.Item>{squad.squadName}</ListGroup.Item>
-        <ListGroup.Item>Genre</ListGroup.Item>
+        <ListGroup.Item className="mb-3">{squad.squadName}</ListGroup.Item>
       </ListGroup>
-      <Button><Link to = {
-        `/squad-details/${squad.squadId}`
-      }>
-        view squad
-      </Link></Button>
+      <Link to = {`/squad-details/${squad.squadId}`}>View Squad</Link>
     </Card.Body>
-  </Card>)
+  </Card>
+  )
 }

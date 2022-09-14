@@ -67,16 +67,15 @@ if (squad === null) {
   return (
     <>
       <>
-
+<div className="text-center">
         <div className={"container text-center"}>
           <div className={"row"}>
             <div className={"col"} >
-              <img src={Images} alt="black-squad" />
+              <img src={Images} className="w-75" alt="black-squad" />
             </div>
           </div>
         </div>
-
-        <div className={"container"}>
+        <div className="container">
           <ListGroup>
             <ListGroup.Item>{profile.map(profile => <span>{profile.profileName} </span>)}</ListGroup.Item>
             <ListGroup.Item>{squad.squadName}</ListGroup.Item>
@@ -84,8 +83,9 @@ if (squad === null) {
             <ListGroup.Item>{squad.squadAchievements}</ListGroup.Item>
             <ListGroup.Item>{squad.squadMaxSize}</ListGroup.Item>
           </ListGroup>
-          <Button onClick={clickRequest} variant="dark w-100 text-center">Join Squad</Button>
+          <Button className="button mt-5" onClick={clickRequest} variant="dark text-center">Join Squad</Button>
         </div>
+</div>
       </>
     </>
   )

@@ -2,6 +2,14 @@
     background-color: #212121
 }
 
+.background2 {
+    background-color: #323232;
+}
+
+.cardWidth {
+    width: 18rem;
+}
+
 /*Text Color*/
 .text {
     color: #14FFEC

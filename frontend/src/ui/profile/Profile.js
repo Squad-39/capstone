@@ -32,7 +32,7 @@ export const Profile = () => {
         )}
       <CreateSquadModal/>
       <Link to={`/squad-lead/`}>
-        <Button className='text' variant="dark">Dark</Button>
+        <Button className='button' variant="dark">Squad Requests</Button>
       </Link>
 
     </>
