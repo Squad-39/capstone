@@ -4,6 +4,7 @@ import Controller from '../images/controllericon.png'
 import { ListGroup } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 import { SquadDetailModal } from '../squadDetail/SquadDetailModal'
+import { Link } from 'react-router-dom'
 
 export function SquadsCard(props) {
   const {squad} = props
@@ -14,7 +15,11 @@ export function SquadsCard(props) {
         <ListGroup.Item>{squad.squadName}</ListGroup.Item>
         <ListGroup.Item>Genre</ListGroup.Item>
       </ListGroup>
-      <SquadDetailModal/>
+      <Button><Link to = {
+        `/squad-details/${squad.squadId}`
+      }>
+        view squad
+      </Link></Button>
     </Card.Body>
   </Card>)
 }

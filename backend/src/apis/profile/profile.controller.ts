@@ -37,7 +37,7 @@ export async function putProfileController (request: Request, response: Response
         return (response.json({status: 400, data: null, message: error.Message.ts}))
       }
     }
-export async function getProfilesBySquadIdController (request: Request, response: Response): Promise<Response> {
+export async function getPartialProfilesBySquadIdController (request: Request, response: Response): Promise<Response> {
   try {
     const {squadId} = request.params;
     const mySqlResult = await selectPartialProfilesBySquadId(squadId);
